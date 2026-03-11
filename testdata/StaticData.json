@@ -1,0 +1,111 @@
+{
+    "login_Data": {
+        "url": "/login",
+        "username": "mounikareddy@gmail.com",
+        "password": "mounika@123"
+    },
+
+    "employeeDetails":
+    {
+        "password":"abcd@123",
+        "role":"Employee",
+        "dob":"2003-02-09",
+        "joiningDate":"2025-12-04",
+        "qualification":"B.Tech",
+        "department":"CSE", 
+        "gender":"Male",
+        "mobileNumber":"8976589760",
+        "bloodgroup":"A+",
+        "designation":"QA Tester",
+        "salary":"30000",
+        "location":"Banglore",
+        "reportingTo":"mounikareddy@gmail.com",
+        "certificates": ["10th","Intermediate","Degree","PG","Original Degree"],
+        "sharedEmployeeJsonFile":"../testdata/DynamicData.json",
+        "employeeDataJsonFile":"../testdata/StaticData.json",
+        "Total Leaves":"12",
+        "Utilized Leaves":"0",
+        "Balance Leaves":"12",
+        "Leaves Left":"0",
+        "Extra Work":"0"
+    },
+
+    "excelData":{
+        "uploadFile": "testdata/sample_employee_details_T001.xlsx",
+        "uploadmultipleDataFile":"testdata/generated_employee_details.xlsx",
+        "sheetName":"sample_employee_details",
+        "countofEmployees":5
+    },
+
+    "leaveData":{
+        "subject":"Family Occusation",
+        "leaveReason":"Attending cousin marriage",
+        "rejectLeave":"Leave cannot be approved due to high-priority project deadlines during the requested period.",
+        "cancelLeave":"Applied by mistake",
+        "status":{
+            "leave": {
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "cancelled": "Cancelled",
+            "pending": "Awaiting"
+            }
+        }
+    },
+
+    "workFromHomeData":{
+        "subject":"Health Issue",
+        "workFromHomeReason":"Suffering with fever",
+         "status":{
+            "wfh": {
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "cancelled": "Cancelled",
+            "pending": "Awaiting"
+            }
+        }
+    },
+
+    "toastMessages":{
+        "createSuccess":"Saved Successfully",
+        "updateSuccess":"Employee Updated Successfully",
+        "deleteSuccess":"Employee Deleted Successfully",
+        "applyLeaveSuccess":"Leave Applied Successfully",
+        "applyWFHSuccess":"WFH Applied Successfully",
+        "rejectLeave":"Leave Rejected",
+        "rejectWFH":"WFH Rejected",
+        "approveLeaveSuccess":"Leave Approved",
+        "approveWFHSuccess":"WFH Approved",
+        "fileUploadSuccess":"File uploaded successfully",
+        "cancelAppliedLeave":"Leave Cancelled Successfully",
+        "cancelAppliedWFH":"WFH Cancelled Successfully",
+        "clientCreatedSuccess":"Client Added Successfully",
+        "clientUpdateSuccess":"Client Updated Successfully",
+        "clientDeletedSuccess":"Client Deleted Successfully",
+        "projectCreatedSuccess":"Project Added Successfully",
+        "ProjectUpdatedSuccess":"Project Updated Successfully",
+        "projectDeleteSuccess":"Project Deleted Successfully"
+    },
+
+    "notificationTexts":{
+        "requestLeave":"Leave requested by (.+) for (\\d+)",
+        "requestWFH":"WFH requested by (.+) for (\\d+)"
+    },
+
+    "clientData":{
+        "address":"Capital park, Hyderabad",
+        "state":"Telangana",
+        "Country":"India",
+        "clientEmail":"mounika.divamdinneshavuakrla@optimworks.com",
+        "billingEmail":"dsmounikareddy15@gmail.com",
+        "GSTNumber":"12ABCDE3456F7Z8",
+        "UpdateCountry":"USA"
+    },
+
+    "projectData":{
+        "clientName":"Shiva",
+        "projectName":"Demo",
+        "status":"Active",
+        "currency":"INR",
+        "updateCurrency":"EUR"
+    }
+}
