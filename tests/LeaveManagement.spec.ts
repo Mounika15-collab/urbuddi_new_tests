@@ -49,7 +49,7 @@ test.describe('Leave Management Tests - @Regression', () =>
     await LeaveManagementController.deleteEmployeeAfterRejectingLeaveOrWorkFromHome(page);
   })
 
-  test('Lead is able to approve applied leave',async({page})=>{
+  test.only('Lead is able to approve applied leave',async({page})=>{
     const locators=leavePage.getLocators(page);
     const expectedDays=await LeaveManagementController.applyLeave(page,dateRange);
     const initialLeaveCount = await leavePage.getInitialLeaveCount(locators);

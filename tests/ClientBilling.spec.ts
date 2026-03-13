@@ -19,7 +19,7 @@ test.describe('Employee Management Tests - @Regression', () => {
     await clientController.deleteClient(page,locators);
   });
 
-  test.only('User is able to Update Client',async({page})=>{
+  test('User is able to Update Client',async({page})=>{
     const clientName = getGenerateEmployee();
     const locators= getClientBillingLocators(page)
     await clientController.AddClientWithValidData(page,clientName,locators);

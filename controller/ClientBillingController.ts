@@ -40,3 +40,4 @@ export async function deleteClient(page:Page,locators: ReturnType<typeof getClie
     await clientPage.verifyClientDeletedToast(page,locators);
     await clientPage.verifyClientDeletedOrNot(locators);
 }
+

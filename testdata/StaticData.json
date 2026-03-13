@@ -21,8 +21,8 @@
         "location":"Banglore",
         "reportingTo":"mounikareddy@gmail.com",
         "certificates": ["10th","Intermediate","Degree","PG","Original Degree"],
-        "sharedEmployeeJsonFile":"../testdata/DynamicData.json",
-        "employeeDataJsonFile":"../testdata/StaticData.json",
+        "sharedEmployeeJsonFile":"testdata/DynamicData.json",
+        "employeeDataJsonFile":"testdata/StaticData.json",
         "Total Leaves":"12",
         "Utilized Leaves":"0",
         "Balance Leaves":"12",
@@ -106,6 +106,10 @@
         "projectName":"Demo",
         "status":"Active",
         "currency":"INR",
-        "updateCurrency":"EUR"
+        "updateCurrency":"EUR",
+        "clientProjectExperience":"6",
+        "serviceType":"Manual Testing",
+        "BillingType":"HOURLY",
+        "BillingAmount":"100"
     }
 }

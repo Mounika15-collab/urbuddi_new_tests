@@ -1,4 +1,5 @@
 import { Page, Locator,expect } from '@playwright/test';
+import fs from 'fs';
 
 export async function fillInput(locator: Locator, value: string): Promise<void> {
   await locator.waitFor({ state: 'visible' });
@@ -30,5 +31,24 @@ export async function scrollToRightAndClick(page: Page, element: Locator): Promi
   });
   await element.waitFor({ state: 'visible' });
   await clickElement(element);
+}
+
+export function getCreatedEmployeeDetails(filePath: string): string {
+    const data = fs.readFileSync(filePath, 'utf-8');
+    const json = JSON.parse(data);
+
+    if (!json.firstname || !json.lastname) {
+        throw new Error('JSON does not contain firstname or lastname for employee');
+    }
+    return `${json.firstname} ${json.lastname}`;
+}
+
+export function getTodayDate(): string {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const dd = String(today.getDate()).padStart(2, '0');
+
+    return `${yyyy}-${mm}-${dd}`;
 }
 

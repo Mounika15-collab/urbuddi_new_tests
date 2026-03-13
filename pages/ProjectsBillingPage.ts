@@ -2,7 +2,7 @@ import { Locator,Page,expect } from "@playwright/test";
 import { clickElement, fillInput, verifyToast } from "../utils/CommonActions";
 import { selectDropdownOption,generateUniqueDates } from "../utils/CommonUtils";
 import testData from '../testdata/StaticData.json';
-import { scrollToRightAndClick } from '../utils/CommonActions';
+import { scrollToRightAndClick,getCreatedEmployeeDetails,getTodayDate } from '../utils/CommonActions';
 
 
 export interface ProjectBillingLocators{
@@ -26,6 +26,16 @@ export interface ProjectBillingLocators{
     searchClientName:Locator;
     verifyDeletedRecord:Locator;
     updateButton:Locator;
+    assignEmployeeIcon:Locator;
+    assignEmployeePopupHeading:Locator;
+    selectEmployeeName:Locator;
+    experienceTextfield:Locator;
+    onboardingDate:Locator;
+    selectServiceType:Locator;
+    selectBillingType:Locator;
+    billingAmountTextfield:Locator;
+    viewIcon:Locator;
+    projectDetailsPageHeading:Locator;
 }
 
 export function getProjectBillingLocators(page:Page):ProjectBillingLocators{
@@ -49,7 +59,17 @@ export function getProjectBillingLocators(page:Page):ProjectBillingLocators{
         searchProjectName:page.getByLabel('PROJECT NAME Filter Input'), 
         searchClientName:page.getByLabel('CLIENT NAME Filter Input'),
         verifyDeletedRecord:page.locator('[col-id="client_name"]', { hasText: testData.projectData.projectName }), 
-        updateButton:page.locator('//button[text()="Update"]'),      
+        updateButton:page.locator('//button[text()="Update"]'),  
+        assignEmployeeIcon:page.locator('div[title="Assign Employee"]'),
+        assignEmployeePopupHeading:page.locator('//p[text()="Assign Employee to Techtest"]'),
+        selectEmployeeName:page.locator('select[name="employee_id"]'),
+        experienceTextfield:page.getByPlaceholder('Enter Client Project Experience'),
+        onboardingDate:page.locator('input[name="start_date"]'),
+        selectServiceType:page.locator('select[name="service_type"]'),
+        selectBillingType:page.locator('select[name="billing_type"]'),
+        billingAmountTextfield:page.getByPlaceholder('Enter Billing Amount'), 
+        viewIcon:page.locator('div[title="View"]'),
+        projectDetailsPageHeading:page.locator('//p[text()=" Project Details"]'),  
     };
 }
 
@@ -70,7 +90,6 @@ export async function clickOnAddProjectButton(locators:ReturnType<typeof getProj
 }
 
 export async function verifyAddProjectFrameHeading(locators:ReturnType<typeof getProjectBillingLocators>){
-    await expect(locators.addProjectFrameHeading).toBeVisible();
     await expect(locators.addProjectFrameHeading).toBeVisible();
 }
 
@@ -162,4 +181,54 @@ export async function clickOnUpdatenButton(locators:ReturnType<typeof getProject
 
 export async function verifyProjectUpdatedToast(page:Page){
     await verifyToast(page,testData.toastMessages.ProjectUpdatedSuccess);
+}
+
+export async function clickOnAssignEmployeeIcon(page:Page,locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.assignEmployeeIcon).toBeVisible();
+    await scrollToRightAndClick(page,locators.assignEmployeeIcon);
+}
+
+export async function verifyAssignEmployeeFrameHeading(locators:ReturnType<typeof getProjectBillingLocators>)
+{
+    await expect(locators.assignEmployeePopupHeading).toBeVisible();
+}
+
+export async function selectEmployeeNameFromDropdown(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.selectEmployeeName).toBeVisible();
+    const employeeName=getCreatedEmployeeDetails(testData.employeeDetails.sharedEmployeeJsonFile);
+    await selectDropdownOption(locators.selectEmployeeName,employeeName);
+}
+
+export async function enterClientProjectExperience(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.experienceTextfield).toBeVisible();
+    await fillInput(locators.experienceTextfield,testData.projectData.clientProjectExperience);
+}
+
+export async function enterOnbordingDate(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.onboardingDate).toBeVisible();
+    const { start } = await generateUniqueDates();
+    await fillInput(locators.onboardingDate,start);
+}
+
+export async function selectServiceTypeFromDropdown(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.selectServiceType).toBeVisible();
+    await selectDropdownOption(locators.selectServiceType,testData.projectData.serviceType);
+}
+
+export async function selectBillingTypeFromDropdown(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.selectBillingType).toBeVisible();
+    await selectDropdownOption(locators.selectBillingType,testData.projectData.BillingType);
+}
+
+export async function enterBillingAmount(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.billingAmountTextfield).toBeVisible();
+    await fillInput(locators.billingAmountTextfield,testData.projectData.BillingAmount);
+}
+
+export async function clickOnViewIcon(page:Page,locators:ReturnType<typeof getProjectBillingLocators>){
+    await scrollToRightAndClick(page,locators.viewIcon);
+}
+
+export async function verifyProjectDetailsPageHeading(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.projectDetailsPageHeading).toBeVisible();  
 }

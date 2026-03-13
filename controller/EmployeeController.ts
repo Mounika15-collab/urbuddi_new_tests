@@ -1,4 +1,4 @@
-import { Page,expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 import * as EmployeePage from '../pages/EmployeePage';
 import { GeneratedEmployee, getGenerateEmployee } from '../utils/CommonUtils';
 import {
