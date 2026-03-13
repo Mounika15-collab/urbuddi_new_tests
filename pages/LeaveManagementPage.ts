@@ -228,13 +228,13 @@ export async function verifyApprovedWFHToast(page:Page)
 
 export async function validateLeaveCount(dateRange:DateRange,initialLeaveCount: number,locators: ReturnType<typeof getLocators>){
   const appliedLeaveCount=Number(calculateExpectedDays(dateRange.start, dateRange.end));
-  console.log("applied leavecount:"+appliedLeaveCount)
+  console.log("applied leavecount:"+appliedLeaveCount);
   await expect(locators.initialLeaveCount).not.toHaveText(initialLeaveCount.toString());
   const updatedLeaveCount = Number(await locators.initialLeaveCount.innerText());
-  console.log("updated leavecount:"+updatedLeaveCount)
+  console.log("updated leavecount:"+updatedLeaveCount);
   const expectedLeaveCount = initialLeaveCount - appliedLeaveCount;
-  console.log("expectedleavecounte"+expectedLeaveCount)
-  expect(updatedLeaveCount).not.toBe(expectedLeaveCount);
+  console.log("expectedleavecounte"+expectedLeaveCount);
+  expect(updatedLeaveCount).toBe(expectedLeaveCount);
 }
 
 export async function verifyApprovedLeaveToast(page:Page)

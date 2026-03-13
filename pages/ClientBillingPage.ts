@@ -114,6 +114,10 @@ export async function enterClientEmail(locators: ReturnType<typeof getClientBill
     await fillInput(locators.clientEmailTextfield,testData.clientData.clientEmail);
 }
 
+export async function enterInvalidEmail(locators:ReturnType<typeof getClientBillingLocators>,invalidEmail:string){
+    await expect(locators.clientEmailTextfield).toBeVisible();
+    await fillInput(locators.clientEmailTextfield,invalidEmail);
+}
 export async function clickOnBillingEmailCheckBox(locators: ReturnType<typeof getClientBillingLocators>){
     await expect(locators.billingEmailCheckBox).toBeVisible();
     await clickElement(locators.billingEmailCheckBox);

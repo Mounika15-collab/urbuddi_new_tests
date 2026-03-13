@@ -8,9 +8,11 @@ let lastGeneratedDate: Date | null = null;
 
 export interface GeneratedEmployee {
   empID: string;
+  invalidEmpID:string;
   firstname: string;
   lastname: string;
   email: string;
+  invalidEmail:string;
 }
 
 function onlyAlphabets(value: string): string {
@@ -25,12 +27,13 @@ export function getGenerateEmployee(): GeneratedEmployee {
 
   return {
     empID: `A${letters}${numbers}`,
+    invalidEmpID:`JKLMNAARE${letters}${numbers}`,
     firstname: onlyAlphabets(rawFirstName),
     lastname: onlyAlphabets(rawLastName),
     email: faker.internet.email(), 
+    invalidEmail:faker.internet.email().replace("@","$"),
   };
 }
-
 
 export async function generateUniqueDates(duration: number = 1): Promise<{ start: string; end: string }> {
   const today = new Date();

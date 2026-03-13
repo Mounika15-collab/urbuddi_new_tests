@@ -9,7 +9,7 @@
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
-    "maxFailures": 0,
+    "maxFailures": 1,
     "metadata": {
       "actualWorkers": 1
     },
@@ -29,7 +29,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 30000
+        "timeout": 0
       }
     ],
     "quiet": false,
@@ -57,32 +57,32 @@
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.58.2",
-    "workers": 4,
+    "workers": 1,
     "webServer": null
   },
   "suites": [
     {
-      "title": "LeaveManagement.spec.ts",
-      "file": "LeaveManagement.spec.ts",
+      "title": "Employee.spec.ts",
+      "file": "Employee.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Leave Management Tests - @Regression",
-          "file": "LeaveManagement.spec.ts",
-          "line": 25,
+          "title": "Employee Management Tests - @Regression",
+          "file": "Employee.spec.ts",
+          "line": 18,
           "column": 6,
           "specs": [
             {
-              "title": "Lead is able to approve applied leave",
+              "title": "User ia able to create employee with invalid data",
               "ok": false,
               "tags": [
                 "Regression"
               ],
               "tests": [
                 {
-                  "timeout": 30000,
+                  "timeout": 0,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "chromium",
@@ -91,62 +91,63 @@
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "timedOut",
-                      "duration": 30630,
+                      "status": "failed",
+                      "duration": 40166,
                       "error": {
-                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
-                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        "message": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[class=\"deleteIcon\"]') to be visible\u001b[22m\n",
+                        "stack": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[class=\"deleteIcon\"]') to be visible\u001b[22m\n\n    at Object.clickOnDeleteIcon (C:\\Users\\admin\\Documents\\urBuddi-tests\\pages\\EmployeePage.ts:229:29)\n    at Object.deleteEmployeeDetails (C:\\Users\\admin\\Documents\\urBuddi-tests\\controller\\EmployeeController.ts:171:22)\n    at C:\\Users\\admin\\Documents\\urBuddi-tests\\tests\\Employee.spec.ts:42:6",
+                        "location": {
+                          "file": "C:\\Users\\admin\\Documents\\urBuddi-tests\\pages\\EmployeePage.ts",
+                          "column": 29,
+                          "line": 229
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\pages\\EmployeePage.ts:229\n\n\u001b[0m \u001b[90m 227 |\u001b[39m\n \u001b[90m 228 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m clickOnDeleteIcon(locators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getEmployeeLocators\u001b[33m>\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 229 |\u001b[39m   \u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39mdeleteIcon\u001b[33m.\u001b[39mwaitFor({state\u001b[33m:\u001b[39m\u001b[32m'visible'\u001b[39m\u001b[33m,\u001b[39mtimeout\u001b[33m:\u001b[39m \u001b[35m5000\u001b[39m })\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 230 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39mdeleteIcon)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 231 |\u001b[39m   \u001b[36mawait\u001b[39m clickElement(locators\u001b[33m.\u001b[39mdeleteIcon)\u001b[33m;\u001b[39m\n \u001b[90m 232 |\u001b[39m }\u001b[0m"
                       },
                       "errors": [
                         {
-                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
-                        },
-                        {
                           "location": {
-                            "file": "C:\\Users\\admin\\Documents\\urBuddi-tests\\controller\\LeaveManagementController.ts",
-                            "column": 14,
-                            "line": 153
+                            "file": "C:\\Users\\admin\\Documents\\urBuddi-tests\\pages\\EmployeePage.ts",
+                            "column": 29,
+                            "line": 229
                           },
-                          "message": "Error: page.waitForTimeout: Test timeout of 30000ms exceeded.\n\n\u001b[90m   at \u001b[39m..\\controller\\LeaveManagementController.ts:153\n\n\u001b[0m \u001b[90m 151 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mLeavePage\u001b[39m\u001b[33m.\u001b[39mclickRequestButton(locators)\u001b[33m;\u001b[39m\n \u001b[90m 152 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mLeavePage\u001b[39m\u001b[33m.\u001b[39msearchEmployee(locators\u001b[33m,\u001b[39msharedData)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 153 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 154 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mLeavePage\u001b[39m\u001b[33m.\u001b[39mscrollToRightAndApproveWorkFromHome(page\u001b[33m,\u001b[39mlocators)\u001b[33m;\u001b[39m  \n \u001b[90m 155 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mLeavePage\u001b[39m\u001b[33m.\u001b[39mverifyApprovedLeaveToast(page)\u001b[33m;\u001b[39m\n \u001b[90m 156 |\u001b[39m }\u001b[0m\n\u001b[2m    at Object.approveAppliedLeave (C:\\Users\\admin\\Documents\\urBuddi-tests\\controller\\LeaveManagementController.ts:153:14)\u001b[22m\n\u001b[2m    at C:\\Users\\admin\\Documents\\urBuddi-tests\\tests\\LeaveManagement.spec.ts:56:5\u001b[22m"
+                          "message": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[class=\"deleteIcon\"]') to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\EmployeePage.ts:229\n\n\u001b[0m \u001b[90m 227 |\u001b[39m\n \u001b[90m 228 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m clickOnDeleteIcon(locators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getEmployeeLocators\u001b[33m>\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 229 |\u001b[39m   \u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39mdeleteIcon\u001b[33m.\u001b[39mwaitFor({state\u001b[33m:\u001b[39m\u001b[32m'visible'\u001b[39m\u001b[33m,\u001b[39mtimeout\u001b[33m:\u001b[39m \u001b[35m5000\u001b[39m })\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 230 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39mdeleteIcon)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 231 |\u001b[39m   \u001b[36mawait\u001b[39m clickElement(locators\u001b[33m.\u001b[39mdeleteIcon)\u001b[33m;\u001b[39m\n \u001b[90m 232 |\u001b[39m }\u001b[0m\n\u001b[2m    at Object.clickOnDeleteIcon (C:\\Users\\admin\\Documents\\urBuddi-tests\\pages\\EmployeePage.ts:229:29)\u001b[22m\n\u001b[2m    at Object.deleteEmployeeDetails (C:\\Users\\admin\\Documents\\urBuddi-tests\\controller\\EmployeeController.ts:171:22)\u001b[22m\n\u001b[2m    at C:\\Users\\admin\\Documents\\urBuddi-tests\\tests\\Employee.spec.ts:42:6\u001b[22m"
                         }
                       ],
-                      "stdout": [
-                        {
-                          "text": "initial leavecount1\n"
-                        },
-                        {
-                          "text": "Notification text: Leave requested by Donnell Hickle for 1 day(s)\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-12T14:53:33.394Z",
+                      "startTime": "2026-03-13T13:22:53.584Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\admin\\Documents\\urBuddi-tests\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\test-failed-1.png"
+                          "path": "C:\\Users\\admin\\Documents\\urBuddi-tests\\test-results\\Employee-Employee-Manageme-6aa33--employee-with-invalid-data-chromium\\test-failed-1.png"
                         },
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\admin\\Documents\\urBuddi-tests\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\video.webm"
+                          "path": "C:\\Users\\admin\\Documents\\urBuddi-tests\\test-results\\Employee-Employee-Manageme-6aa33--employee-with-invalid-data-chromium\\video.webm"
                         },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
-                          "path": "C:\\Users\\admin\\Documents\\urBuddi-tests\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\error-context.md"
+                          "path": "C:\\Users\\admin\\Documents\\urBuddi-tests\\test-results\\Employee-Employee-Manageme-6aa33--employee-with-invalid-data-chromium\\error-context.md"
                         }
-                      ]
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\admin\\Documents\\urBuddi-tests\\pages\\EmployeePage.ts",
+                        "column": 29,
+                        "line": 229
+                      }
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "945117909fb857dc7ce5-5142ca65c42b19b3c67b",
-              "file": "LeaveManagement.spec.ts",
-              "line": 52,
+              "id": "af52868f52be60f7ad1f-5c81f5471f5cb4f74d6a",
+              "file": "Employee.spec.ts",
+              "line": 39,
               "column": 8
             }
           ]
@@ -154,10 +155,14 @@
       ]
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
   "stats": {
-    "startTime": "2026-03-12T14:53:28.054Z",
-    "duration": 36622.049,
+    "startTime": "2026-03-13T13:22:49.844Z",
+    "duration": 44352.668999999994,
     "expected": 0,
     "skipped": 0,
     "unexpected": 1,

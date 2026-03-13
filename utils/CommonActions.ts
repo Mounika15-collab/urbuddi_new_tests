@@ -13,7 +13,14 @@ export async function clickElement(locator: Locator): Promise<void> {
 
 export async function verifyToast(page: Page, message: string) {
   const toast = page.getByText(message, { exact: false }).first();
+  await toast.waitFor({ state: "visible", timeout: 5000 });
   await expect(toast).toBeVisible();
+}
+
+export async function verifyToastMessage(page:Page,message:string)
+{
+  const toast=page.getByText(message,{ exact: false }).first();
+  await expect(toast).not.toBeVisible();
 }
 
 export async function verifyStatus(locator:Locator,expectedValue:string):Promise<void>

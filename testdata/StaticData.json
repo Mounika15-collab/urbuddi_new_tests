@@ -30,6 +30,11 @@
         "Extra Work":"0"
     },
 
+     "invalidEmployeeDetails":{
+        "invalidMobileNumber":"45879658965",
+        "invalidPassword":"abcdefg"    
+    },
+
     "excelData":{
         "uploadFile": "testdata/sample_employee_details_T001.xlsx",
         "uploadmultipleDataFile":"testdata/generated_employee_details.xlsx",

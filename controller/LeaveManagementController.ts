@@ -54,11 +54,13 @@ export async function loginWithNewUser(page:Page,sharedData: SharedData){
   }
   await page.goto('/');
   await MenuPage.clickOnLogOutMenu(page);
-  await MenuPage.clickOnConfirmButton(page);
+  await MenuPage.clickOnConfirmButton(page)
   await expect(page).toHaveURL(/login/);
 
   await LoginPage.enterUserName(page, sharedData.email);
+  console.log("enter username:"+sharedData.email);
   await LoginPage.enterPassword(page, sharedData.password);
+  console.log("enter password:"+sharedData.password);
   await LoginPage.clickOnLoginButton(page);
 }
 
@@ -150,8 +152,9 @@ export async function approveAppliedLeave(page:Page,expectedDays: number):Promis
   await LeavePage.clickLeaveManagementMenu(page,locators);
   await LeavePage.clickRequestButton(locators);
   await LeavePage.searchEmployee(locators,sharedData);
-  await page.waitForTimeout(2000);
-  await LeavePage.scrollToRightAndApproveWorkFromHome(page,locators);  
+  await page.waitForLoadState("networkidle");
+  await LeavePage.scrollToRightAndApproveWorkFromHome(page,locators); 
+  await page.waitForLoadState("networkidle"); 
   await LeavePage.verifyApprovedLeaveToast(page);
 }
 
@@ -231,6 +234,7 @@ export async function cancelAppliedWorkFromHome(page:Page):Promise<void>
 export async function verifyLeaveCountAfterApprovingLeave(page:Page,sharedData:SharedData,initialLeaveCount: number,dateRange:DateRange)
 {
    const locators=LeavePage.getLocators(page);
+  //  await page.waitForLoadState("networkidle");
    await loginWithNewUser(page,sharedData);
    await page.reload();
    await page.waitForLoadState('domcontentloaded');
@@ -245,7 +249,6 @@ export async function validateLeaveNotification(page: Page,sharedData: SharedDat
   await LeavePage.clickNotificationIcon(locators);
   await expect(locators.notificationText).toBeVisible();
   const text = await locators.notificationText.innerText();
-  console.log("Notification text:", text);
   const match = text.match(testData.notificationTexts.requestLeave);
 
   const actualName = match?.[1];
