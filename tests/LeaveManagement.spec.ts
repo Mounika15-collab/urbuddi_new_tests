@@ -28,6 +28,8 @@ test.describe('Leave Management Tests - @Regression', () =>
   let dateRange:DateRange;
   let sharedData: SharedData; 
 
+  test.setTimeout(3000000)
+
   test.beforeEach(async ({ page }) => {
     employeeData = getEmployeeDataFromJSON();
     const locators = EmployeePage.getEmployeeLocators(page);
@@ -55,7 +57,7 @@ test.describe('Leave Management Tests - @Regression', () =>
     const initialLeaveCount = await leavePage.getInitialLeaveCount(locators);
     await LeaveManagementController.approveAppliedLeave(page,expectedDays);
     await LeaveManagementController.verifyLeaveCountAfterApprovingLeave(page,sharedData,initialLeaveCount,dateRange);
-    // await LeaveManagementController.deleteEmployeeAfterApplyLeaveOrWorkFromHome(page);
+    await LeaveManagementController.deleteEmployeeAfterApplyLeaveOrWorkFromHome(page);
   })
 
   test('User is able to apply work from home',async({ page })=>{

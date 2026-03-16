@@ -126,6 +126,13 @@ export async function addEmployeeWithInvalidData(page:Page,locators: ReturnType<
   await EmployeePage.verifyEmployeeCreatedSuccesToast(page);
 }
 
+export async function addEmployeeWithoutEnteringData(page:Page,locators:ReturnType<typeof EmployeePage.getEmployeeLocators>){
+  await EmployeePage.navigateToEmployee(page, locators);
+  await EmployeePage.clickOnAddEmployeeButton(page, locators);
+  await EmployeePage.clickOnAddButton(locators);
+  await EmployeePage.verifyEmployeeCreatedSuccesToast(page);
+}
+
 export async function addEmployeeWithDuplicateData(page:Page,locators:ReturnType<typeof EmployeePage.getEmployeeLocators>,sharedData:SharedData,data:FullEmployee){
    await EmployeePage.navigateToEmployee(page, locators);
   await EmployeePage.clickOnAddEmployeeButton(page, locators); 

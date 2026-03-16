@@ -1,5 +1,5 @@
 import {Page,Locator,expect} from '@playwright/test';
-import {clickElement,fillInput, scrollToRightAndClick, verifyToast} from '../utils/CommonActions';
+import {clickElement,fillInput, scrollToRightAndClick, verifyToast, verifyToastMessage} from '../utils/CommonActions';
 import { GeneratedEmployee,selectDropdownOption,handleCheckboxes } from '../utils/CommonUtils';
 import testData from '../testdata/StaticData.json';
 import fs from "fs";
@@ -27,6 +27,7 @@ export interface ClientBillingLocators
   deleteConfirmPopupHeading:Locator;
   confirmButton:Locator;
   searchClient:Locator;
+  closeButton:Locator;
 }
 
 export function getClientBillingLocators(page:Page):ClientBillingLocators{
@@ -52,6 +53,7 @@ export function getClientBillingLocators(page:Page):ClientBillingLocators{
         deleteConfirmPopupHeading:page.locator('//p[text()="Confirm Delete"]'),
         confirmButton:page.locator('//button[text()="Yes"]'),
         searchClient:page.getByLabel('CLIENT NAME Filter Input'),
+        closeButton:page.locator('svg[class="close-btn"]'),
     };
 }
 
@@ -136,6 +138,10 @@ export async function verifyClientAddedToast(page:Page){
     await verifyToast(page,testData.toastMessages.clientCreatedSuccess);
 }
 
+export async function verifyClientCreatedSuccessToast(page:Page){
+    await verifyToastMessage(page,testData.toastMessages.clientCreatedSuccess);
+}
+
 export async function clickOnDeleteIcon(page: Page,locators: ReturnType<typeof getClientBillingLocators>): Promise<void> {
     await scrollToRightAndClick(page,locators.deleteIcon.first());
 }
@@ -188,4 +194,9 @@ export async function verifyClientUpdatedToast(page:Page){
 export async function updateCountry(locators: ReturnType<typeof getClientBillingLocators>){
      await expect(locators.countryDropdown).toBeVisible();
      await selectDropdownOption(locators.countryDropdown,testData.clientData.UpdateCountry);
+}
+
+export async function clickOnCloseButton(locators:ReturnType<typeof getClientBillingLocators>){
+    await expect(locators.closeButton).toBeVisible();
+    await clickElement(locators.closeButton);
 }

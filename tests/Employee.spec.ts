@@ -15,7 +15,7 @@ function getSharedEmployee(): SharedData {
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
 
-test.describe('Employee Management Tests - @Regression', () => {
+test.describe('Employee Management Tests -Positive Test cases', () => {
   let context: BrowserContext;
   let page: Page;
   let employeeData: FullEmployee;
@@ -36,18 +36,6 @@ test.describe('Employee Management Tests - @Regression', () => {
     await EmployeeController.deleteEmployeeDetails(page,locators)
   });
 
-  test.only('User ia able to create employee with invalid data',async({page})=>{
-     const locators = EmployeePage.getEmployeeLocators(page);
-     await EmployeeController.addEmployeeWithInvalidData(page,locators,employeeData);
-     await EmployeeController.deleteEmployeeDetails(page,locators)
-  })
-
-  test('User is able to create empployee with duplicate data',async({page})=>{
-    const locators = EmployeePage.getEmployeeLocators(page);
-    await EmployeeController.addEmployeeWithDuplicateData(page,locators,sharedData,employeeData);
-    await EmployeeController.deleteEmployeeDetails(page,locators)
-  })
-
   test('User is able to update Employee ', async ({ page }) => {
     const locators = EmployeePage.getEmployeeLocators(page);
     await EmployeeController.updateEmployeeDetails(page, locators, employeeData);
@@ -59,6 +47,34 @@ test.describe('Employee Management Tests - @Regression', () => {
     await EmployeeController.deleteEmployeeDetails(page, locators);
   });
 });
+
+test.describe('Employee Management - Negative Test cases',()=>{
+
+  let employeeData: FullEmployee;
+  let sharedData: SharedData; 
+  
+  test.beforeEach(async ({ page }) => {
+    employeeData = getEmployeeDataFromJSON();
+    sharedData = getSharedEmployee();
+    const locators = EmployeePage.getEmployeeLocators(page);
+    await page.goto('/');
+  });
+
+  test('User ia able to create employee with invalid data',async({page})=>{
+     const locators = EmployeePage.getEmployeeLocators(page);
+     await EmployeeController.addEmployeeWithInvalidData(page,locators,employeeData);
+  })
+
+  test('User is able to create employee with duplicate data',async({page})=>{
+    const locators = EmployeePage.getEmployeeLocators(page);
+    await EmployeeController.addEmployeeWithDuplicateData(page,locators,sharedData,employeeData);
+  })
+
+  test('User is able to create employee without entering data',async({page})=>{
+    const locators = EmployeePage.getEmployeeLocators(page);
+    await EmployeeController.addEmployeeWithoutEnteringData(page,locators);
+  })
+})
 
 test.describe('Employee Upload Tests ', () => {
 

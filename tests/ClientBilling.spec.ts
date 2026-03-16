@@ -14,10 +14,19 @@ test.describe('Employee Management Tests - @Regression', () => {
 
   test('User is able to add Client',async({page})=>{
     const clientName = getGenerateEmployee();
-    const locators= getClientBillingLocators(page)
+    const locators= getClientBillingLocators(page);
     await clientController.AddClientWithValidData(page,clientName,locators);
     await clientController.deleteClient(page,locators);
   });
+
+  test('User is able to add client with empty fields',async({page})=>{
+    const clientName = getGenerateEmployee();
+    const locators= getClientBillingLocators(page);
+    await clientController.addClientWithoutEnteringData(page,locators);
+  });
+
+  
+
 
   test('User is able to Update Client',async({page})=>{
     const clientName = getGenerateEmployee();

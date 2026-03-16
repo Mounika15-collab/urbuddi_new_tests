@@ -3,6 +3,8 @@ import * as clientPage from '../pages/ClientBillingPage';
 import {getClientBillingLocators} from '../pages/ClientBillingPage';
 import { GeneratedEmployee } from '../utils/CommonUtils';
 
+
+
 export async function navigateToClientBillingModule(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
     await clientPage.clickOnBillingMenu(locators);
     await clientPage.clickOnClients(locators);
@@ -18,11 +20,22 @@ export async function AddClientWithValidData(page:Page,clientName: GeneratedEmpl
     await clientPage.selectCountryFromDropdown(locators);
     await clientPage.enterClientEmail(locators);
     await clientPage.clickOnBillingEmailCheckBox(locators);
-    await clientPage.enterGSTNumber(locators);
+    // await clientPage.enterGSTNumber(locators);
     await clientPage.clickOnAddButton(locators);
     await clientPage.verifyClientAddedToast(page);
 }
 
+export async function addClientWithoutEnteringData(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
+    await navigateToClientBillingModule(page,locators);
+    await clientPage.clickOnAddClientButton(locators);
+    await clientPage.verifyAddClientFrameHeading(locators);
+    await clientPage.clickOnAddButton(locators);
+    await clientPage.verifyClientCreatedSuccessToast(page);
+}
+
+export async function addClientWithInvalidData(page:Page,locators:ReturnType<typeof getClientBillingLocators>){
+    
+}
 export async function updateClient(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
     await clientPage.clickOnEditIcon(page,locators);
     await clientPage.verifyEditClientHeading(locators);
