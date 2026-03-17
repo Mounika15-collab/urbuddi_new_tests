@@ -29,9 +29,9 @@ export function getEmployeeLocators(page: Page) {
     addButton: page.locator('button[type="submit"]'),
     submitButton: page.locator('//button[text()="Submit"]'),
     searchEmpIdField: page.locator('input[aria-label="EMP ID Filter Input"]'),
-    editIcon: page.locator('svg[style*="cursor: pointer"]'),
+    editIcon: page.locator('svg[id="DTOAZZ"]').first(),
     certificateDropdown: page.getByRole('button', { name: 'Certificates' }),
-    rowCheckBox: page.locator('input[aria-label*="row selection"]'),
+    rowCheckBox: page.locator('input[aria-label*="row selection"]').first(),
     deleteIcon: page.locator('button[class="deleteIcon"]'),
     importExcelSheetButton: page.locator('//button[text()="Import Excel Sheet"]'),
     fileInput: page.locator('input[type="file"]'),
@@ -201,7 +201,7 @@ export async function searchEmployee(page: Page,locators: ReturnType<typeof getE
 
 export async function clickOnEditIcon(locators: ReturnType<typeof getEmployeeLocators>) {
    await expect(locators.editIcon).toBeVisible();
-  await clickElement(locators.editIcon.first());
+  await clickElement(locators.editIcon);
 }
 
 export async function checkCertificates(page: Page, locators: ReturnType<typeof getEmployeeLocators>, certificates: string[] = []) {
