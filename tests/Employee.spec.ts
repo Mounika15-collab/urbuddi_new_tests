@@ -36,7 +36,7 @@ test.describe('Employee Management Tests -Positive Test cases', () => {
     await EmployeeController.deleteEmployeeDetails(page,locators)
   });
 
-  test.only('User is able to update Employee ', async ({ page }) => {
+  test('User is able to update Employee ', async ({ page }) => {
     const locators = EmployeePage.getEmployeeLocators(page);
     await EmployeeController.updateEmployeeDetails(page, locators, employeeData);
     await EmployeeController.deleteEmployeeDetails(page,locators)
