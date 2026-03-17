@@ -7,10 +7,9 @@ export default defineConfig({
   },
   //globalTeardown: require.resolve('./utils/EmailReport'),
   testDir: './tests',
-  // fullyParallel: true,
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  //retries: process.env.CI ? 2 : 0,
-  // retries:1,
+  retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [['html',{open:'never'}],['json', { outputFile: 'results.json' }]
 ],
@@ -26,7 +25,7 @@ export default defineConfig({
     video: 'retain-on-failure'
   },
 
-  globalSetup: require.resolve('./tests/login.setup.ts'),
+  globalSetup: require.resolve('./tests/Login.setup.ts'),
 
   projects: [
     {
@@ -34,14 +33,14 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'],launchOptions: {slowMo: 500,},viewport: { width: 1540, height: 864} },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
+    },
   ],
 });
