@@ -29,7 +29,7 @@ export function getEmployeeLocators(page: Page) {
     addButton: page.locator('button[type="submit"]'),
     submitButton: page.locator('//button[text()="Submit"]'),
     searchEmpIdField: page.locator('input[aria-label="EMP ID Filter Input"]'),
-    editIcon: page.locator('svg[id="DTOAZZ"]').first(),
+    editIcon: page.locator('div[col-id="5"] svg').first(),
     certificateDropdown: page.getByRole('button', { name: 'Certificates' }),
     rowCheckBox: page.locator('input[aria-label*="row selection"]').first(),
     deleteIcon: page.locator('button[class="deleteIcon"]'),

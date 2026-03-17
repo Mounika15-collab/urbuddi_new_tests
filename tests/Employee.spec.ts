@@ -1,7 +1,6 @@
 import { test, expect, Page, BrowserContext } from '@playwright/test';
 import * as EmployeeController from '../controller/EmployeeController';
 import { getEmployeeDataFromJSON, FullEmployee } from '../controller/EmployeeController';
-import employeeData from '../testdata/StaticData.json';
 import * as EmployeePage from '../pages/EmployeePage';
 import {SharedData} from '../controller/EmployeeController';
 import testData from '../testdata/StaticData.json';
@@ -36,7 +35,7 @@ test.describe('Employee Management Tests -Positive Test cases', () => {
     await EmployeeController.deleteEmployeeDetails(page,locators)
   });
 
-  test('User is able to update Employee ', async ({ page }) => {
+  test.only('User is able to update Employee ', async ({ page }) => {
     const locators = EmployeePage.getEmployeeLocators(page);
     await EmployeeController.updateEmployeeDetails(page, locators, employeeData);
     await EmployeeController.deleteEmployeeDetails(page,locators)
