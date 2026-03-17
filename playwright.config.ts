@@ -33,14 +33,14 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'],launchOptions: {slowMo: 500,},viewport: { width: 1540, height: 864} },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
+    // },
   ],
 });
