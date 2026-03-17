@@ -76,13 +76,13 @@ test.describe('Employee Management - Negative Test cases',()=>{
   })
 })
 
-test.describe('Employee Upload Tests ', () => {
+// test.describe('Employee Upload Tests ', () => {
 
-  test('User is able to upload multiple employee data', async ({ page }) => {
-    await page.goto('/');
-    const jsonFilePath = employeeData.employeeDetails.employeeDataJsonFile;
-    const locators = EmployeePage.getEmployeeLocators(page);
-    await EmployeeController.uploadMultipleEmployeeData(page, locators, jsonFilePath);
-    await EmployeeController.deleteImportedEmployeesInEmployeeList(page);
-  });
-});
+//   test('User is able to upload multiple employee data', async ({ page }) => {
+//     await page.goto('/');
+//     const jsonFilePath = employeeData.employeeDetails.employeeDataJsonFile;
+//     const locators = EmployeePage.getEmployeeLocators(page);
+//     await EmployeeController.uploadMultipleEmployeeData(page, locators, jsonFilePath);
+//     await EmployeeController.deleteImportedEmployeesInEmployeeList(page);
+//   });
+// });

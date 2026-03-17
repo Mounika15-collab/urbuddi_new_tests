@@ -30,7 +30,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'],launchOptions: {slowMo: 500,},viewport: { width: 1540, height: 864} },
+      use: { ...devices['Desktop Chrome'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
     },
 
     // {
