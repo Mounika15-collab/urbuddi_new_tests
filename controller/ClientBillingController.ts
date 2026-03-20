@@ -23,11 +23,9 @@ export async function AddClientWithValidData(page:Page,clientName: GeneratedEmpl
     await clientPage.selectCountryFromDropdown(locators);
     await clientPage.enterClientEmail(locators);
     await clientPage.clickOnBillingEmailCheckBox(locators);
-    await clientPage.enterGSTNumber(locators);
+    // await clientPage.enterGSTNumber(locators);
     await clientPage.clickOnAddButton(locators);
     await clientPage.verifyClientAddedToast(page);
-
-
 }
 
 export async function addClientWithoutEnteringData(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
@@ -49,7 +47,6 @@ export async function addClientWithInvalidData(page:Page,locators:ReturnType<typ
     await clientPage.selectCountryFromDropdown(locators);
     await clientPage.enterClientInvalidEmail(locators);
     await clientPage.clickOnBillingEmailCheckBox(locators);
-    await clientPage.enterGSTNumber(locators);
     await clientPage.clickOnAddButton(locators);
     await clientPage.verifyEmailFieldErrors(locators);
     await clientPage.verifyClientCreatedSuccessToast(page);
@@ -66,7 +63,6 @@ export async function addclientWithDuplicateData(page:Page,clientName:GeneratedE
     await clientPage.selectCountryFromDropdown(locators);
     await clientPage.enterDuplicateClientEmail(locators);
     await clientPage.clickOnBillingEmailCheckBox(locators);
-    await clientPage.enterGSTNumber(locators);
     await clientPage.clickOnAddButton(locators);
     await clientPage.verifyErrorMessage(locators);
     await clientPage.verifyClientCreatedSuccessToast(page);
