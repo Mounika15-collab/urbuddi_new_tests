@@ -26,8 +26,6 @@ export async function AddClientWithValidData(page:Page,clientName: GeneratedEmpl
     await clientPage.enterGSTNumber(locators);
     await clientPage.clickOnAddButton(locators);
     await clientPage.verifyClientAddedToast(page);
-
-
 }
 
 export async function addClientWithoutEnteringData(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
