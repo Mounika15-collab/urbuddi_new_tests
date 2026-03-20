@@ -23,7 +23,7 @@ export async function AddClientWithValidData(page:Page,clientName: GeneratedEmpl
     await clientPage.selectCountryFromDropdown(locators);
     await clientPage.enterClientEmail(locators);
     await clientPage.clickOnBillingEmailCheckBox(locators);
-    await clientPage.enterGSTNumber(locators);
+    // await clientPage.enterGSTNumber(locators);
     await clientPage.clickOnAddButton(locators);
     await clientPage.verifyClientAddedToast(page);
 }
