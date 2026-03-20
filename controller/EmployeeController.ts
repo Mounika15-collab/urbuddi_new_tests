@@ -130,6 +130,7 @@ export async function addEmployeeWithoutEnteringData(page:Page,locators:ReturnTy
   await EmployeePage.navigateToEmployee(page, locators);
   await EmployeePage.clickOnAddEmployeeButton(page, locators);
   await EmployeePage.clickOnAddButton(locators);
+  await EmployeePage.verifyEmptyDataEmployeeFrom(locators);
   await EmployeePage.verifyEmployeeCreatedSuccesToast(page);
 }
 

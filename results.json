@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 4
     },
     "preserveOutput": "always",
     "projects": [
@@ -20,7 +20,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 4
         },
         "id": "chromium",
         "name": "chromium",
@@ -75,7 +75,7 @@
           "column": 6,
           "specs": [
             {
-              "title": "User is able to update Employee ",
+              "title": "User is able to Create Employee ",
               "ok": true,
               "tags": [],
               "tests": [
@@ -90,12 +90,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 15241,
+                      "duration": 18345,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-17T07:01:32.832Z",
+                      "startTime": "2026-03-17T17:54:48.585Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -103,10 +103,310 @@
                   "status": "expected"
                 }
               ],
+              "id": "af52868f52be60f7ad1f-d618ecc5897578948a8e",
+              "file": "Employee.spec.ts",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "User is able to update Employee ",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 26814,
+                      "error": {
+                        "message": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Employee Updated Successfully').first() to be visible\u001b[22m\n",
+                        "stack": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Employee Updated Successfully').first() to be visible\u001b[22m\n\n    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:15)\n    at Object.verifyEmployeeUpdatedToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:220:20)\n    at Object.updateEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:169:22)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:38:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 15,
+                          "line": 17
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m toast\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m\"visible\"\u001b[39m\u001b[33m,\u001b[39m timeout\u001b[33m:\u001b[39m \u001b[35m5000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m }\n \u001b[90m 20 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 15,
+                            "line": 17
+                          },
+                          "message": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Employee Updated Successfully').first() to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m toast\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m\"visible\"\u001b[39m\u001b[33m,\u001b[39m timeout\u001b[33m:\u001b[39m \u001b[35m5000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m }\n \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[2m    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:15)\u001b[22m\n\u001b[2m    at Object.verifyEmployeeUpdatedToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:220:20)\u001b[22m\n\u001b[2m    at Object.updateEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:169:22)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:38:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-17T17:54:48.656Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Manageme-8ce74-is-able-to-update-Employee--chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Manageme-8ce74-is-able-to-update-Employee--chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Manageme-8ce74-is-able-to-update-Employee--chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 15,
+                        "line": 17
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
               "id": "af52868f52be60f7ad1f-788465e01951063e5a5e",
               "file": "Employee.spec.ts",
-              "line": 38,
-              "column": 8
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "User ia able to delete Employee ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 20937,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-17T17:54:48.559Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-9e48eda7a0f2220f1b9d",
+              "file": "Employee.spec.ts",
+              "line": 42,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Employee Management - Negative Test cases",
+          "file": "Employee.spec.ts",
+          "line": 48,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User ia able to create employee with invalid data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 15866,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-17T17:54:48.567Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-fab0de5d31173f949218",
+              "file": "Employee.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "User is able to create employee with duplicate data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 13522,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-17T17:55:05.177Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-a35a9c997abcab9b5dda",
+              "file": "Employee.spec.ts",
+              "line": 64,
+              "column": 7
+            },
+            {
+              "title": "User is able to create employee without entering data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4403,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-17T17:55:07.651Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-3388a765f1145cbb3889",
+              "file": "Employee.spec.ts",
+              "line": 69,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Employee Upload Tests ",
+          "file": "Employee.spec.ts",
+          "line": 75,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User is able to upload multiple employee data",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 8976,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('input[type=\"file\"]')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"file\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <input type=\"file\" id=\"fileInput\" accept=\".xlsx, .xls\" class=\"sc-cPiKLX ciXXIs\"/>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('input[type=\"file\"]')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"file\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <input type=\"file\" id=\"fileInput\" accept=\".xlsx, .xls\" class=\"sc-cPiKLX ciXXIs\"/>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n    at Object.uploadEmployeeFile (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:246:36)\n    at Object.uploadMultipleEmployeeData (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:196:22)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:81:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts",
+                          "column": 36,
+                          "line": 246
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\pages\\EmployeePage.ts:246\n\n\u001b[0m \u001b[90m 244 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadEmployeeFile( locators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m filePath\u001b[33m:\u001b[39m string) \n \u001b[90m 245 |\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 246 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39mfileInput)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 247 |\u001b[39m   \u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39mfileInput\u001b[33m.\u001b[39msetInputFiles(path\u001b[33m.\u001b[39mresolve(filePath))\u001b[33m;\u001b[39m\n \u001b[90m 248 |\u001b[39m }\n \u001b[90m 249 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts",
+                            "column": 36,
+                            "line": 246
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('input[type=\"file\"]')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"file\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <input type=\"file\" id=\"fileInput\" accept=\".xlsx, .xls\" class=\"sc-cPiKLX ciXXIs\"/>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\EmployeePage.ts:246\n\n\u001b[0m \u001b[90m 244 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadEmployeeFile( locators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m filePath\u001b[33m:\u001b[39m string) \n \u001b[90m 245 |\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 246 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39mfileInput)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 247 |\u001b[39m   \u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39mfileInput\u001b[33m.\u001b[39msetInputFiles(path\u001b[33m.\u001b[39mresolve(filePath))\u001b[33m;\u001b[39m\n \u001b[90m 248 |\u001b[39m }\n \u001b[90m 249 |\u001b[39m\u001b[0m\n\u001b[2m    at Object.uploadEmployeeFile (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:246:36)\u001b[22m\n\u001b[2m    at Object.uploadMultipleEmployeeData (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:196:22)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:81:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-17T17:55:10.446Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Upload-T-f4b0a-load-multiple-employee-data-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Upload-T-f4b0a-load-multiple-employee-data-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Upload-T-f4b0a-load-multiple-employee-data-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts",
+                        "column": 36,
+                        "line": 246
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-eead07d34553f52c152d",
+              "file": "Employee.spec.ts",
+              "line": 77,
+              "column": 7
             }
           ]
         }
@@ -115,11 +415,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-03-17T07:01:28.539Z",
-    "duration": 20043.356,
-    "expected": 1,
+    "startTime": "2026-03-17T17:54:43.350Z",
+    "duration": 36484.237,
+    "expected": 5,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 2,
     "flaky": 0
   }
 }

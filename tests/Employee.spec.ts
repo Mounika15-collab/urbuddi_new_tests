@@ -15,8 +15,6 @@ function getSharedEmployee(): SharedData {
 }
 
 test.describe('Employee Management Tests -Positive Test cases', () => {
-  let context: BrowserContext;
-  let page: Page;
   let employeeData: FullEmployee;
   let sharedData: SharedData; 
 
@@ -55,7 +53,6 @@ test.describe('Employee Management - Negative Test cases',()=>{
   test.beforeEach(async ({ page }) => {
     employeeData = getEmployeeDataFromJSON();
     sharedData = getSharedEmployee();
-    const locators = EmployeePage.getEmployeeLocators(page);
     await page.goto('/');
   });
 
@@ -75,13 +72,13 @@ test.describe('Employee Management - Negative Test cases',()=>{
   })
 })
 
-// test.describe('Employee Upload Tests ', () => {
+test.describe('Employee Upload Tests ', () => {
 
-//   test('User is able to upload multiple employee data', async ({ page }) => {
-//     await page.goto('/');
-//     const jsonFilePath = employeeData.employeeDetails.employeeDataJsonFile;
-//     const locators = EmployeePage.getEmployeeLocators(page);
-//     await EmployeeController.uploadMultipleEmployeeData(page, locators, jsonFilePath);
-//     await EmployeeController.deleteImportedEmployeesInEmployeeList(page);
-//   });
-// });
+  test('User is able to upload multiple employee data', async ({ page }) => {
+    await page.goto('/');
+    const jsonFilePath = testData.employeeDetails.employeeDataJsonFile;
+    const locators = EmployeePage.getEmployeeLocators(page);
+    await EmployeeController.uploadMultipleEmployeeData(page, locators, jsonFilePath);
+    await EmployeeController.deleteImportedEmployeesInEmployeeList(page);
+  });
+});

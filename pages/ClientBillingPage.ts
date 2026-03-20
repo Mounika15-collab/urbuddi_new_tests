@@ -1,36 +1,16 @@
-import {Page,Locator,expect} from '@playwright/test';
-import {clickElement,fillInput, scrollToRightAndClick, verifyToast, verifyToastMessage} from '../utils/CommonActions';
-import { GeneratedEmployee,selectDropdownOption,handleCheckboxes } from '../utils/CommonUtils';
+import {Page,expect} from '@playwright/test';
+import {clickElement,fillInput, getErrorCount, scrollToRightAndClick, verifyToast, verifyToastMessage,updateSharedData,getSharedData} from '../utils/CommonActions';
+import { GeneratedEmployee,selectDropdownOption,getGenerateEmployee } from '../utils/CommonUtils';
 import testData from '../testdata/StaticData.json';
 import fs from "fs";
 import path from "path";
 
-export interface ClientBillingLocators
-{
-  billingMenu: Locator;
-  clients: Locator;
-  addClientButton:Locator;
-  addClientHeading:Locator;
-  nameTextfield:Locator;
-  addressTextfield:Locator;
-  stateTextfield:Locator;
-  countryDropdown:Locator;
-  clientEmailTextfield:Locator;
-  billingEmailCheckBox:Locator;
-  billingEmailTextfield:Locator;
-  gstNumberTextfield:Locator;  
-  addButton:Locator;
-  editIcon:Locator;
-  editClientHeading:Locator;
-  updateButton:Locator;
-  deleteIcon:Locator;
-  deleteConfirmPopupHeading:Locator;
-  confirmButton:Locator;
-  searchClient:Locator;
-  closeButton:Locator;
-}
 
-export function getClientBillingLocators(page:Page):ClientBillingLocators{
+export const sharedData={
+    clientEmail:'clientEmail',
+};
+
+export function getClientBillingLocators(page:Page){
     return {
         billingMenu: page.locator('//p[text()="Billing"]'),
         clients: page.locator('//p[text()="Clients"]'),
@@ -54,6 +34,8 @@ export function getClientBillingLocators(page:Page):ClientBillingLocators{
         confirmButton:page.locator('//button[text()="Yes"]'),
         searchClient:page.getByLabel('CLIENT NAME Filter Input'),
         closeButton:page.locator('svg[class="close-btn"]'),
+        errorFields:page.locator('[style*="border-left: 10px solid red"]'),
+        errorMessage:page.locator('//p[text()="Client with this name already exists"]'),
     };
 }
 
@@ -112,14 +94,27 @@ export async function selectCountryFromDropdown(locators: ReturnType<typeof getC
 }
 
 export async function enterClientEmail(locators: ReturnType<typeof getClientBillingLocators>){
+    const clientEmail=getGenerateEmployee();
+    const email=clientEmail.email;
     await expect(locators.clientEmailTextfield).toBeVisible();
-    await fillInput(locators.clientEmailTextfield,testData.clientData.clientEmail);
+    await fillInput(locators.clientEmailTextfield,email);
+    updateSharedData(sharedData.clientEmail,email,testData.employeeDetails.sharedEmployeeJsonFile);
 }
 
-export async function enterInvalidEmail(locators:ReturnType<typeof getClientBillingLocators>,invalidEmail:string){
+export async function enterClientInvalidEmail(locators:ReturnType<typeof getClientBillingLocators>){
+    const clientEmail=getGenerateEmployee();
+    const email=clientEmail.invalidEmail;
     await expect(locators.clientEmailTextfield).toBeVisible();
-    await fillInput(locators.clientEmailTextfield,invalidEmail);
+    await fillInput(locators.clientEmailTextfield,email);
 }
+
+export async function enterDuplicateClientEmail(locators:ReturnType<typeof getClientBillingLocators>){
+    const data = getSharedData(testData.employeeDetails.sharedEmployeeJsonFile);
+    const duplicateEmail = data.clientEmail;
+    await expect(locators.clientEmailTextfield).toBeVisible();
+    await fillInput(locators.clientEmailTextfield,duplicateEmail); 
+}
+
 export async function clickOnBillingEmailCheckBox(locators: ReturnType<typeof getClientBillingLocators>){
     await expect(locators.billingEmailCheckBox).toBeVisible();
     await clickElement(locators.billingEmailCheckBox);
@@ -199,4 +194,19 @@ export async function updateCountry(locators: ReturnType<typeof getClientBilling
 export async function clickOnCloseButton(locators:ReturnType<typeof getClientBillingLocators>){
     await expect(locators.closeButton).toBeVisible();
     await clickElement(locators.closeButton);
+}
+
+export async function verifyEmptyDataClientForm(locators:ReturnType<typeof getClientBillingLocators>){
+    const count=await getErrorCount(locators.errorFields);
+    await expect(count).toBe(6);
+}
+
+export async function verifyEmailFieldErrors(locators:ReturnType<typeof getClientBillingLocators>){
+    const count=await getErrorCount(locators.errorFields);
+    await expect(count).toBe(2);
+}
+
+export async function verifyErrorMessage(locators:ReturnType<typeof getClientBillingLocators>){
+    await locators.errorMessage.waitFor({state:'visible'});
+    await expect(locators.errorMessage).toBeVisible();
 }

@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test';
-import { fillInput, clickElement,verifyToast, verifyToastMessage, getTodayDate } from '../utils/CommonActions';
+import { fillInput, clickElement,verifyToast, verifyToastMessage, getTodayDate,getErrorCount } from '../utils/CommonActions';
 import { selectDropdownOption, handleCheckboxes } from '../utils/CommonUtils';
 import testData from '../testdata/StaticData.json';
 import path from 'path';
@@ -36,6 +36,7 @@ export function getEmployeeLocators(page: Page) {
     importExcelSheetButton: page.locator('//button[text()="Import Excel Sheet"]'),
     fileInput: page.locator('input[type="file"]'),
     duplicateEmployeeErrorMessage:page.locator('//p[text()="Employee with ID or Email already exists."]'),
+    errorFields:page.locator('[style*="border-left: 10px solid red"]'),
   };
 }
 
@@ -249,4 +250,9 @@ export async function uploadEmployeeFile( locators: ReturnType<typeof getEmploye
 export async function verifyFileUploadSuccessToast(page:Page)
 {
   await verifyToast(page,testData.toastMessages.fileUploadSuccess);
+}
+
+export async function verifyEmptyDataEmployeeFrom(locators: ReturnType<typeof getEmployeeLocators>){
+  const count = await getErrorCount(locators.errorFields);
+  await expect(count).toBe(17);
 }
