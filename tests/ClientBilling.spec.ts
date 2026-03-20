@@ -4,10 +4,8 @@ import {getGenerateEmployee} from '../utils/CommonUtils';
 import {getClientBillingLocators} from '../pages/ClientBillingPage';
 
 
-test.describe('Employee Management Tests - @Regression', () => {
-  let context: BrowserContext;
-  let page: Page;
- 
+test.describe('Client Positive Tests - @Regression', () => {
+   
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
@@ -19,15 +17,6 @@ test.describe('Employee Management Tests - @Regression', () => {
     await clientController.deleteClient(page,locators);
   });
 
-  test('User is able to add client with empty fields',async({page})=>{
-    const clientName = getGenerateEmployee();
-    const locators= getClientBillingLocators(page);
-    await clientController.addClientWithoutEnteringData(page,locators);
-  });
-
-  
-
-
   test('User is able to Update Client',async({page})=>{
     const clientName = getGenerateEmployee();
     const locators= getClientBillingLocators(page)
@@ -36,3 +25,27 @@ test.describe('Employee Management Tests - @Regression', () => {
     await clientController.deleteClient(page,locators);
   });
 });
+
+test.describe('Client Negative Tests',()=>{
+ 
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+  });
+
+  test('User is able to add client with empty fields',async({page})=>{
+    const locators= getClientBillingLocators(page);
+    await clientController.addClientWithoutEnteringData(page,locators);
+  });
+
+  test('User is able to add client with invalid Email',async({page})=>{
+    const clientName = getGenerateEmployee();
+     const locators= getClientBillingLocators(page);
+     await clientController.addClientWithInvalidData(page,locators,clientName)
+  })  
+  
+  test.only('USer is able to add client with duplicate data',async({page})=>{
+    const clientName = getGenerateEmployee();
+    const locators= getClientBillingLocators(page);
+    await clientController.addclientWithDuplicateData(page,clientName,locators)
+  })
+})

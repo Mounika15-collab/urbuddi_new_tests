@@ -4,6 +4,9 @@ import {getClientBillingLocators} from '../pages/ClientBillingPage';
 import { GeneratedEmployee } from '../utils/CommonUtils';
 
 
+export interface SharedData {
+  email: string;
+}
 
 export async function navigateToClientBillingModule(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
     await clientPage.clickOnBillingMenu(locators);
@@ -20,9 +23,11 @@ export async function AddClientWithValidData(page:Page,clientName: GeneratedEmpl
     await clientPage.selectCountryFromDropdown(locators);
     await clientPage.enterClientEmail(locators);
     await clientPage.clickOnBillingEmailCheckBox(locators);
-    // await clientPage.enterGSTNumber(locators);
+    await clientPage.enterGSTNumber(locators);
     await clientPage.clickOnAddButton(locators);
     await clientPage.verifyClientAddedToast(page);
+
+
 }
 
 export async function addClientWithoutEnteringData(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
@@ -30,11 +35,41 @@ export async function addClientWithoutEnteringData(page:Page,locators: ReturnTyp
     await clientPage.clickOnAddClientButton(locators);
     await clientPage.verifyAddClientFrameHeading(locators);
     await clientPage.clickOnAddButton(locators);
+    await clientPage.verifyEmptyDataClientForm(locators);
     await clientPage.verifyClientCreatedSuccessToast(page);
 }
 
-export async function addClientWithInvalidData(page:Page,locators:ReturnType<typeof getClientBillingLocators>){
-    
+export async function addClientWithInvalidData(page:Page,locators:ReturnType<typeof getClientBillingLocators>,clientName: GeneratedEmployee){
+    await navigateToClientBillingModule(page,locators);
+    await clientPage.clickOnAddClientButton(locators);
+    await clientPage.verifyAddClientFrameHeading(locators);
+    await clientPage.enterName(clientName,locators);
+    await clientPage.enterAddress(locators);
+    await clientPage.enterState(locators);
+    await clientPage.selectCountryFromDropdown(locators);
+    await clientPage.enterClientInvalidEmail(locators);
+    await clientPage.clickOnBillingEmailCheckBox(locators);
+    await clientPage.enterGSTNumber(locators);
+    await clientPage.clickOnAddButton(locators);
+    await clientPage.verifyEmailFieldErrors(locators);
+    await clientPage.verifyClientCreatedSuccessToast(page);
+}
+
+export async function addclientWithDuplicateData(page:Page,clientName:GeneratedEmployee,locators:ReturnType<typeof getClientBillingLocators>){
+    await navigateToClientBillingModule(page,locators);
+    await AddClientWithValidData(page,clientName,locators);
+    await clientPage.clickOnAddClientButton(locators);
+    await clientPage.verifyAddClientFrameHeading(locators);
+    await clientPage.enterName(clientName,locators);
+    await clientPage.enterAddress(locators);
+    await clientPage.enterState(locators);
+    await clientPage.selectCountryFromDropdown(locators);
+    await clientPage.enterDuplicateClientEmail(locators);
+    await clientPage.clickOnBillingEmailCheckBox(locators);
+    await clientPage.enterGSTNumber(locators);
+    await clientPage.clickOnAddButton(locators);
+    await clientPage.verifyErrorMessage(locators);
+    await clientPage.verifyClientCreatedSuccessToast(page);
 }
 export async function updateClient(page:Page,locators: ReturnType<typeof getClientBillingLocators>){
     await clientPage.clickOnEditIcon(page,locators);

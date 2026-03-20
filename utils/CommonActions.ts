@@ -1,5 +1,6 @@
 import { Page, Locator,expect } from '@playwright/test';
 import fs from 'fs';
+import path from 'path';
 
 export async function fillInput(locator: Locator, value: string): Promise<void> {
   await locator.waitFor({ state: 'visible' });
@@ -53,9 +54,37 @@ export function getCreatedEmployeeDetails(filePath: string): string {
 export function getTodayDate(): string {
     const today = new Date();
     const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
 
     return `${yyyy}-${mm}-${dd}`;
 }
 
+
+export async function getErrorCount(locator:Locator):Promise<number>{
+  return await locator.count();
+}
+
+export function updateSharedData(key: string, value: string, filePath: string) {
+    const absolutePath = path.resolve(filePath);
+    
+    const dir = path.dirname(absolutePath);
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+    
+    const fileContent = fs.readFileSync(absolutePath, 'utf-8');
+    const data = JSON.parse(fileContent || '{}');
+    data[key] = value;
+    fs.writeFileSync(absolutePath, JSON.stringify(data, null, 2));
+}
+
+
+export function getSharedData(filePath: string) {
+    const absolutePath = path.resolve(filePath);
+    if (!fs.existsSync(absolutePath)) {
+        throw new Error(`Data file not found at ${absolutePath}`);
+    }
+    const fileContent = fs.readFileSync(absolutePath, 'utf-8');
+    return JSON.parse(fileContent);
+}

@@ -1,7 +1,8 @@
 import test, { Page, expect } from '@playwright/test';
 import { selectDropdownOption,calculateExpectedDays } from '../utils/CommonUtils';
 import testData from '../testdata/StaticData.json';
-import { fillInput, clickElement, verifyToast,verifyStatus } from '../utils/CommonActions';
+import { fillInput, clickElement, verifyToast,verifyStatus,updateSharedData, getSharedData } from '../utils/CommonActions';
+import { sharedData } from './ClientBillingPage';
 
 interface DateRange {
   start: string;
@@ -15,6 +16,10 @@ interface SharedData {
   appliedLeave?: DateRange;
 }
 
+// export const sharedData={
+//   appliedLeaveStartDate:'appliedLeaveStartDate',
+//   appliedLeaveEndDate:'appliedLeaveEndDate',
+// }
 export function getLocators(page: Page) {
   return {
     leaveManagementMenu: page.getByText('Leave Management', { exact: true }).first(),
@@ -79,6 +84,7 @@ export async function clickWorkFromHomeButton(locators: ReturnType<typeof getLoc
 export async function enterLeaveDates(locators: ReturnType<typeof getLocators>, from: string, to: string) {
   await fillInput(locators.fromDate,from);
   await fillInput(locators.toDate,to);
+  // updateSharedData()
 }
 
 export async function getCalculatedDaysOnUI(locators: ReturnType<typeof getLocators>): Promise<string> {
