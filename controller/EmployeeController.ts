@@ -212,7 +212,7 @@ export async function deleteImportedEmployeesInEmployeeList(page:Page)
     await EmployeePage.clickOnDeleteIcon(locators);
     await EmployeePage.verifyEmployeeDeletedToast(page);
     await page.waitForLoadState("domcontentloaded"); 
-    await page.waitForTimeout(2000);   
+    await page.waitForLoadState("networkidle"); 
     await EmployeePage.searchEmployee(page,locators,empID); 
     const employeeRow = page.locator(`.ag-cell[col-id="id"]:has-text("${empID}")`);
     await expect(employeeRow).toHaveCount(0);

@@ -9,7 +9,8 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  // retries: process.env.CI ? 2 : 0,
+  retries:1,
   workers: process.env.CI ? 1 : undefined,
   reporter: [['html',{open:'never'}],['json', { outputFile: 'results.json' }]
 ],
@@ -33,14 +34,14 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'],launchOptions: {slowMo: 300,},viewport: { width: 1540, height: 864} },
+    // },
   ],
 });

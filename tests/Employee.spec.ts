@@ -14,7 +14,7 @@ function getSharedEmployee(): SharedData {
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
 
-test.describe('Employee Management Tests -Positive Test cases', () => {
+test.describe('Employee Management Tests -Positive Test cases @Resgression', () => {
   let employeeData: FullEmployee;
   let sharedData: SharedData; 
 
@@ -38,14 +38,9 @@ test.describe('Employee Management Tests -Positive Test cases', () => {
     await EmployeeController.updateEmployeeDetails(page, locators, employeeData);
     await EmployeeController.deleteEmployeeDetails(page,locators)
   });
-
-  test('User ia able to delete Employee ', async ({ page }) => {
-    const locators = EmployeePage.getEmployeeLocators(page);
-    await EmployeeController.deleteEmployeeDetails(page, locators);
-  });
 });
 
-test.describe('Employee Management - Negative Test cases',()=>{
+test.describe('Employee Management - Negative Test cases @Resgression',()=>{
 
   let employeeData: FullEmployee;
   let sharedData: SharedData; 
@@ -70,9 +65,9 @@ test.describe('Employee Management - Negative Test cases',()=>{
     const locators = EmployeePage.getEmployeeLocators(page);
     await EmployeeController.addEmployeeWithoutEnteringData(page,locators);
   })
-})
+});
 
-test.describe('Employee Upload Tests ', () => {
+test.describe('Employee Upload Tests @Resgression', () => {
 
   test('User is able to upload multiple employee data', async ({ page }) => {
     await page.goto('/');

@@ -89,3 +89,4 @@ test.describe('Leave Management Tests - @Regression', () =>
      await LeaveManagementController.deleteEmployeeAfterApplyLeaveOrWorkFromHome(page);
   })
 });
+

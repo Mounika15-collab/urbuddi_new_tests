@@ -1,44 +1,12 @@
-import { Locator,Page,expect } from "@playwright/test";
+import { Page,expect } from "@playwright/test";
 import { clickElement, fillInput, verifyToast } from "../utils/CommonActions";
 import { selectDropdownOption,generateUniqueDates } from "../utils/CommonUtils";
 import testData from '../testdata/StaticData.json';
-import { scrollToRightAndClick,getCreatedEmployeeDetails,getTodayDate } from '../utils/CommonActions';
+import { scrollToRightAndClick,getCreatedEmployeeDetails,getErrorCount} from '../utils/CommonActions';
+import {faker} from '@faker-js/faker';
 
 
-export interface ProjectBillingLocators{
-    billingMenu: Locator;
-    projects:Locator;
-    addProjectButton:Locator;
-    addProjectFrameHeading:Locator;
-    selectClientDropdown:Locator;
-    projectNameTextfield:Locator;
-    ModuleNameTextfield:Locator;
-    startDateTextfield:Locator;
-    selectProjectStatusDropdown:Locator;
-    selectCurrencyDropdown:Locator;
-    addButton:Locator;
-    kebabIcon:Locator;
-    editButton:Locator;
-    deleteButton:Locator;
-    deletePopupHeading:Locator;
-    confirmButton:Locator;
-    searchProjectName:Locator;
-    searchClientName:Locator;
-    verifyDeletedRecord:Locator;
-    updateButton:Locator;
-    assignEmployeeIcon:Locator;
-    assignEmployeePopupHeading:Locator;
-    selectEmployeeName:Locator;
-    experienceTextfield:Locator;
-    onboardingDate:Locator;
-    selectServiceType:Locator;
-    selectBillingType:Locator;
-    billingAmountTextfield:Locator;
-    viewIcon:Locator;
-    projectDetailsPageHeading:Locator;
-}
-
-export function getProjectBillingLocators(page:Page):ProjectBillingLocators{
+export function getProjectBillingLocators(page:Page){
     return{
         billingMenu: page.locator('//p[text()="Billing"]'),
         projects:page.locator('//p[text()="Projects"]').first(),
@@ -60,7 +28,7 @@ export function getProjectBillingLocators(page:Page):ProjectBillingLocators{
         searchClientName:page.getByLabel('CLIENT NAME Filter Input'),
         verifyDeletedRecord:page.locator('[col-id="client_name"]', { hasText: testData.projectData.projectName }), 
         updateButton:page.locator('//button[text()="Update"]'),  
-        assignEmployeeIcon:page.locator('div[title="Assign Employee"]'),
+        assignEmployeeIcon:page.locator('div[title="Assign Employee"]').first(),
         assignEmployeePopupHeading:page.locator('//p[text()="Assign Employee to Techtest"]'),
         selectEmployeeName:page.locator('select[name="employee_id"]'),
         experienceTextfield:page.getByPlaceholder('Enter Client Project Experience'),
@@ -68,8 +36,11 @@ export function getProjectBillingLocators(page:Page):ProjectBillingLocators{
         selectServiceType:page.locator('select[name="service_type"]'),
         selectBillingType:page.locator('select[name="billing_type"]'),
         billingAmountTextfield:page.getByPlaceholder('Enter Billing Amount'), 
-        viewIcon:page.locator('div[title="View"]'),
-        projectDetailsPageHeading:page.locator('//p[text()=" Project Details"]'),  
+        viewIcon:page.locator('div[title="View"]').first(),
+        projectDetailsPageHeading:page.locator('//p[text()=" Project Details"]'), 
+        assignEmployeeButton:page.locator('//button[text()="Assign Employee"]'), 
+        errorFields:page.locator('[style*="border-left: 10px solid red"]'),
+        errorMessage:page.locator('//p[text()="Project with this name already exists"]'),
     };
 }
 
@@ -99,6 +70,12 @@ export async function selectClientNameFromDropdown(locators:ReturnType<typeof ge
 }
 
 export async function enterProjectName(locators:ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.projectNameTextfield).toBeVisible();
+    const projectName = faker.company.name();
+    await fillInput(locators.projectNameTextfield,projectName);
+}
+
+export async function enterDuplicateProjectName(locators:ReturnType<typeof getProjectBillingLocators>){
     await expect(locators.projectNameTextfield).toBeVisible();
     await fillInput(locators.projectNameTextfield,testData.projectData.projectName);
 }
@@ -185,6 +162,7 @@ export async function verifyProjectUpdatedToast(page:Page){
 
 export async function clickOnAssignEmployeeIcon(page:Page,locators:ReturnType<typeof getProjectBillingLocators>){
     await expect(locators.assignEmployeeIcon).toBeVisible();
+    await page.waitForLoadState("networkidle");
     await scrollToRightAndClick(page,locators.assignEmployeeIcon);
 }
 
@@ -231,4 +209,21 @@ export async function clickOnViewIcon(page:Page,locators:ReturnType<typeof getPr
 
 export async function verifyProjectDetailsPageHeading(locators:ReturnType<typeof getProjectBillingLocators>){
     await expect(locators.projectDetailsPageHeading).toBeVisible();  
+}
+
+export async function clickOnAssignEmployeeButton(locators:ReturnType<typeof getProjectBillingLocators>){
+    await clickElement(locators.assignEmployeeButton);
+}
+
+export async function verifyAssignedEmployeeToastInProjectDetailsPage(page:Page){
+    await verifyToast(page,testData.toastMessages.assignEmployeeToast);
+}
+
+export async function verifyEmptyProjectData(locators: ReturnType<typeof getProjectBillingLocators>){
+  const count = await getErrorCount(locators.errorFields);
+  await expect(count).toBe(5);
+}
+
+export async function verifyErrorMessage(locators:ReturnType<typeof  getProjectBillingLocators>){
+    await expect(locators.errorMessage).toBeVisible();
 }

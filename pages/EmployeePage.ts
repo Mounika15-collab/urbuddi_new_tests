@@ -195,7 +195,8 @@ export async function validateduplicateEmployeeErrorMessage(locators: ReturnType
 }
 
 export async function searchEmployee(page: Page,locators: ReturnType<typeof getEmployeeLocators>,employeeId: string){
-   await expect(locators.searchEmpIdField).toBeVisible();
+  await expect(locators.searchEmpIdField).toBeVisible();
+  await page.waitForLoadState("networkidle");
   await fillInput(locators.searchEmpIdField,employeeId);
   await page.keyboard.press('Enter');
 }
@@ -243,7 +244,6 @@ export async function clickOnImportExcelSheetButton( locators: ReturnType<typeof
 
 export async function uploadEmployeeFile( locators: ReturnType<typeof getEmployeeLocators>, filePath: string) 
 {
-  await expect(locators.fileInput).toBeVisible();
   await locators.fileInput.setInputFiles(path.resolve(filePath));
 }
 

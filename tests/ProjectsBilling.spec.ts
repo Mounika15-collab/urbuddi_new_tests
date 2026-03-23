@@ -15,7 +15,7 @@ test.describe('Project Tests - @Regression', () => {
   {
     const locators=getProjectBillingLocators(page);
     await projectController.navigateToProjectBillingModule(locators);
-    await projectController.addNewProject(locators);
+    await projectController.addNewProject(page,locators);
     await projectController.deleteProject(page,locators);    
   })
 
@@ -23,7 +23,7 @@ test.describe('Project Tests - @Regression', () => {
 
     const locators=getProjectBillingLocators(page);
     await projectController.navigateToProjectBillingModule(locators);
-    await projectController.addNewProject(locators);
+    await projectController.addNewProject(page,locators);
     await projectController.updateProject(page,locators);
     await projectController.deleteProject(page,locators); 
   })
@@ -34,4 +34,29 @@ test.describe('Project Tests - @Regression', () => {
     await projectController.assignEmployeeToProject(page,locators,data);
   })
 
+  test('User is able assign employee in projects details',async({page})=>{
+    const locators=getProjectBillingLocators(page);
+    const data=getEmployeeDataFromJSON();
+    await projectController.assignEmployeeInProjectDetailsPage(page,locators,data);
+  })
+});
+
+
+test.describe('Project Tests - @Regression', () => {
+  let context: BrowserContext;
+  let page: Page;
+ 
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+  });
+
+  test('User is able to create project with Empty data',async({page})=>{
+     const locators=getProjectBillingLocators(page);
+     await projectController.addProjectWithEmptyData(locators);
+  })
+
+  test('User is able to add duplicate project',async({page})=>{
+    const locators=getProjectBillingLocators(page);
+    await projectController.addDuplicateProjects(page,locators);
+  })
 });

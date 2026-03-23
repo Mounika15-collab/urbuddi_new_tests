@@ -18,7 +18,7 @@
       {
         "outputDir": "C:/Users/Admin/OneDrive/Desktop/urBuddi_typescript/test-results",
         "repeatEach": 1,
-        "retries": 0,
+        "retries": 1,
         "metadata": {
           "actualWorkers": 4
         },
@@ -62,22 +62,24 @@
   },
   "suites": [
     {
-      "title": "Employee.spec.ts",
-      "file": "Employee.spec.ts",
+      "title": "ClientBilling.spec.ts",
+      "file": "ClientBilling.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Employee Management Tests -Positive Test cases",
-          "file": "Employee.spec.ts",
-          "line": 17,
+          "title": "Client Positive Tests - @Regression",
+          "file": "ClientBilling.spec.ts",
+          "line": 7,
           "column": 6,
           "specs": [
             {
-              "title": "User is able to Create Employee ",
+              "title": "User is able to add Client",
               "ok": true,
-              "tags": [],
+              "tags": [
+                "Regression"
+              ],
               "tests": [
                 {
                   "timeout": 30000,
@@ -90,12 +92,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 18345,
+                      "duration": 8785,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-17T17:54:48.585Z",
+                      "startTime": "2026-03-23T12:24:59.249Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -103,15 +105,17 @@
                   "status": "expected"
                 }
               ],
-              "id": "af52868f52be60f7ad1f-d618ecc5897578948a8e",
-              "file": "Employee.spec.ts",
-              "line": 29,
+              "id": "37aa315937ded51f9fb1-da2188c3acfa4b208730",
+              "file": "ClientBilling.spec.ts",
+              "line": 13,
               "column": 7
             },
             {
-              "title": "User is able to update Employee ",
+              "title": "User is able to Update Client",
               "ok": false,
-              "tags": [],
+              "tags": [
+                "Regression"
+              ],
               "tests": [
                 {
                   "timeout": 30000,
@@ -124,66 +128,132 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 26814,
+                      "duration": 13123,
                       "error": {
-                        "message": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Employee Updated Successfully').first() to be visible\u001b[22m\n",
-                        "stack": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Employee Updated Successfully').first() to be visible\u001b[22m\n\n    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:15)\n    at Object.verifyEmployeeUpdatedToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:220:20)\n    at Object.updateEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:169:22)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:38:5",
+                        "message": "Error: Option \"USA\" not found in dropdown",
+                        "stack": "Error: Option \"USA\" not found in dropdown\n    at selectDropdownOption (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts:94:9)\n    at Object.updateCountry (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\ClientBillingPage.ts:191:6)\n    at Object.updateClient (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\ClientBillingController.ts:75:5)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\ClientBilling.spec.ts:24:5",
                         "location": {
-                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
-                          "column": 15,
-                          "line": 17
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts",
+                          "column": 9,
+                          "line": 94
                         },
-                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m toast\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m\"visible\"\u001b[39m\u001b[33m,\u001b[39m timeout\u001b[33m:\u001b[39m \u001b[35m5000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m }\n \u001b[90m 20 |\u001b[39m\u001b[0m"
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonUtils.ts:94\n\n\u001b[0m \u001b[90m 92 |\u001b[39m   }\n \u001b[90m 93 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 94 |\u001b[39m   \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Option \"${optionToSelect}\" not found in dropdown`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 95 |\u001b[39m }\n \u001b[90m 96 |\u001b[39m\n \u001b[90m 97 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m handleCheckboxes(\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
-                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
-                            "column": 15,
-                            "line": 17
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts",
+                            "column": 9,
+                            "line": 94
                           },
-                          "message": "TimeoutError: locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Employee Updated Successfully').first() to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m toast\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m\"visible\"\u001b[39m\u001b[33m,\u001b[39m timeout\u001b[33m:\u001b[39m \u001b[35m5000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m }\n \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[2m    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:15)\u001b[22m\n\u001b[2m    at Object.verifyEmployeeUpdatedToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:220:20)\u001b[22m\n\u001b[2m    at Object.updateEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:169:22)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:38:5\u001b[22m"
+                          "message": "Error: Option \"USA\" not found in dropdown\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonUtils.ts:94\n\n\u001b[0m \u001b[90m 92 |\u001b[39m   }\n \u001b[90m 93 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 94 |\u001b[39m   \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Option \"${optionToSelect}\" not found in dropdown`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 95 |\u001b[39m }\n \u001b[90m 96 |\u001b[39m\n \u001b[90m 97 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m handleCheckboxes(\u001b[0m\n\u001b[2m    at selectDropdownOption (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts:94:9)\u001b[22m\n\u001b[2m    at Object.updateCountry (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\ClientBillingPage.ts:191:6)\u001b[22m\n\u001b[2m    at Object.updateClient (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\ClientBillingController.ts:75:5)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\ClientBilling.spec.ts:24:5\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-17T17:54:48.656Z",
+                      "startTime": "2026-03-23T12:24:59.211Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Manageme-8ce74-is-able-to-update-Employee--chromium\\test-failed-1.png"
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\ClientBilling-Client-Posit-6e681-er-is-able-to-Update-Client-chromium\\test-failed-1.png"
                         },
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Manageme-8ce74-is-able-to-update-Employee--chromium\\video.webm"
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\ClientBilling-Client-Posit-6e681-er-is-able-to-Update-Client-chromium\\video.webm"
                         },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Manageme-8ce74-is-able-to-update-Employee--chromium\\error-context.md"
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\ClientBilling-Client-Posit-6e681-er-is-able-to-Update-Client-chromium\\error-context.md"
                         }
                       ],
                       "errorLocation": {
-                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
-                        "column": 15,
-                        "line": 17
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts",
+                        "column": 9,
+                        "line": 94
+                      }
+                    },
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 23027,
+                      "error": {
+                        "message": "Error: Option \"USA\" not found in dropdown",
+                        "stack": "Error: Option \"USA\" not found in dropdown\n    at selectDropdownOption (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts:94:9)\n    at Object.updateCountry (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\ClientBillingPage.ts:191:6)\n    at Object.updateClient (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\ClientBillingController.ts:75:5)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\ClientBilling.spec.ts:24:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts",
+                          "column": 9,
+                          "line": 94
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonUtils.ts:94\n\n\u001b[0m \u001b[90m 92 |\u001b[39m   }\n \u001b[90m 93 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 94 |\u001b[39m   \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Option \"${optionToSelect}\" not found in dropdown`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 95 |\u001b[39m }\n \u001b[90m 96 |\u001b[39m\n \u001b[90m 97 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m handleCheckboxes(\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts",
+                            "column": 9,
+                            "line": 94
+                          },
+                          "message": "Error: Option \"USA\" not found in dropdown\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonUtils.ts:94\n\n\u001b[0m \u001b[90m 92 |\u001b[39m   }\n \u001b[90m 93 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 94 |\u001b[39m   \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Option \"${optionToSelect}\" not found in dropdown`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 95 |\u001b[39m }\n \u001b[90m 96 |\u001b[39m\n \u001b[90m 97 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m handleCheckboxes(\u001b[0m\n\u001b[2m    at selectDropdownOption (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts:94:9)\u001b[22m\n\u001b[2m    at Object.updateCountry (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\ClientBillingPage.ts:191:6)\u001b[22m\n\u001b[2m    at Object.updateClient (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\ClientBillingController.ts:75:5)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\ClientBilling.spec.ts:24:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-03-23T12:25:15.048Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\ClientBilling-Client-Posit-6e681-er-is-able-to-Update-Client-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\ClientBilling-Client-Posit-6e681-er-is-able-to-Update-Client-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\ClientBilling-Client-Posit-6e681-er-is-able-to-Update-Client-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\ClientBilling-Client-Posit-6e681-er-is-able-to-Update-Client-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonUtils.ts",
+                        "column": 9,
+                        "line": 94
                       }
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "af52868f52be60f7ad1f-788465e01951063e5a5e",
-              "file": "Employee.spec.ts",
-              "line": 36,
+              "id": "37aa315937ded51f9fb1-45a972da09ff3e13ffa3",
+              "file": "ClientBilling.spec.ts",
+              "line": 20,
               "column": 7
-            },
+            }
+          ]
+        },
+        {
+          "title": "Client Negative Tests",
+          "file": "ClientBilling.spec.ts",
+          "line": 29,
+          "column": 6,
+          "specs": [
             {
-              "title": "User ia able to delete Employee ",
+              "title": "User is able to add client with empty fields",
               "ok": true,
               "tags": [],
               "tests": [
@@ -198,12 +268,12 @@
                       "workerIndex": 2,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 20937,
+                      "duration": 5506,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-17T17:54:48.559Z",
+                      "startTime": "2026-03-23T12:24:59.236Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -211,91 +281,102 @@
                   "status": "expected"
                 }
               ],
-              "id": "af52868f52be60f7ad1f-9e48eda7a0f2220f1b9d",
-              "file": "Employee.spec.ts",
-              "line": 42,
+              "id": "37aa315937ded51f9fb1-a636b981915c17654b5e",
+              "file": "ClientBilling.spec.ts",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "User is able to add client with invalid Email",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 10171,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:24:59.285Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "37aa315937ded51f9fb1-9c00d0297acdcfe8da6e",
+              "file": "ClientBilling.spec.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "USer is able to add client with duplicate data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 13413,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:05.228Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "37aa315937ded51f9fb1-03f354f79693c2b63d53",
+              "file": "ClientBilling.spec.ts",
+              "line": 46,
               "column": 7
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "title": "Employee.spec.ts",
+      "file": "Employee.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
         {
-          "title": "Employee Management - Negative Test cases",
+          "title": "Employee Management Tests -Positive Test cases @Resgression",
           "file": "Employee.spec.ts",
-          "line": 48,
+          "line": 17,
           "column": 6,
           "specs": [
             {
-              "title": "User ia able to create employee with invalid data",
+              "title": "User is able to Create Employee ",
               "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 3,
-                      "parallelIndex": 3,
-                      "status": "passed",
-                      "duration": 15866,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-03-17T17:54:48.567Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
+              "tags": [
+                "Resgression"
               ],
-              "id": "af52868f52be60f7ad1f-fab0de5d31173f949218",
-              "file": "Employee.spec.ts",
-              "line": 59,
-              "column": 7
-            },
-            {
-              "title": "User is able to create employee with duplicate data",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 3,
-                      "parallelIndex": 3,
-                      "status": "passed",
-                      "duration": 13522,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2026-03-17T17:55:05.177Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "af52868f52be60f7ad1f-a35a9c997abcab9b5dda",
-              "file": "Employee.spec.ts",
-              "line": 64,
-              "column": 7
-            },
-            {
-              "title": "User is able to create employee without entering data",
-              "ok": true,
-              "tags": [],
               "tests": [
                 {
                   "timeout": 30000,
@@ -308,12 +389,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4403,
+                      "duration": 14489,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-17T17:55:07.651Z",
+                      "startTime": "2026-03-23T12:25:08.742Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -321,23 +402,61 @@
                   "status": "expected"
                 }
               ],
-              "id": "af52868f52be60f7ad1f-3388a765f1145cbb3889",
+              "id": "af52868f52be60f7ad1f-89df17649bfb6b2065a3",
               "file": "Employee.spec.ts",
-              "line": 69,
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "User is able to update Employee ",
+              "ok": true,
+              "tags": [
+                "Resgression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 18338,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:10.122Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-a88f2576e8c257a7e112",
+              "file": "Employee.spec.ts",
+              "line": 36,
               "column": 7
             }
           ]
         },
         {
-          "title": "Employee Upload Tests ",
+          "title": "Employee Management - Negative Test cases @Resgression",
           "file": "Employee.spec.ts",
-          "line": 75,
+          "line": 43,
           "column": 6,
           "specs": [
             {
-              "title": "User is able to upload multiple employee data",
-              "ok": false,
-              "tags": [],
+              "title": "User ia able to create employee with invalid data",
+              "ok": true,
+              "tags": [
+                "Resgression"
+              ],
               "tests": [
                 {
                   "timeout": 30000,
@@ -349,63 +468,1134 @@
                     {
                       "workerIndex": 2,
                       "parallelIndex": 2,
-                      "status": "failed",
-                      "duration": 8976,
-                      "error": {
-                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('input[type=\"file\"]')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"file\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <input type=\"file\" id=\"fileInput\" accept=\".xlsx, .xls\" class=\"sc-cPiKLX ciXXIs\"/>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('input[type=\"file\"]')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"file\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <input type=\"file\" id=\"fileInput\" accept=\".xlsx, .xls\" class=\"sc-cPiKLX ciXXIs\"/>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n    at Object.uploadEmployeeFile (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:246:36)\n    at Object.uploadMultipleEmployeeData (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:196:22)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:81:5",
-                        "location": {
-                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts",
-                          "column": 36,
-                          "line": 246
+                      "status": "passed",
+                      "duration": 11312,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:18.857Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-87d9c9f48354421f2d76",
+              "file": "Employee.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "User is able to create employee with duplicate data",
+              "ok": true,
+              "tags": [
+                "Resgression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9911,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:23.251Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-997056e70cca306098e0",
+              "file": "Employee.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "User is able to create employee without entering data",
+              "ok": true,
+              "tags": [
+                "Resgression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 3645,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:28.477Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-674dc1fefc6d59c4f11c",
+              "file": "Employee.spec.ts",
+              "line": 64,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Employee Upload Tests @Resgression",
+          "file": "Employee.spec.ts",
+          "line": 70,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User is able to upload multiple employee data",
+              "ok": true,
+              "tags": [
+                "Resgression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 29342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:30.186Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af52868f52be60f7ad1f-aaa1fe8ca19da7ee9e50",
+              "file": "Employee.spec.ts",
+              "line": 72,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "LeaveManagement.spec.ts",
+      "file": "LeaveManagement.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Leave Management Tests - @Regression",
+          "file": "LeaveManagement.spec.ts",
+          "line": 25,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User is able to apply leave",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 24428,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "enter username:Victor88@yahoo.com\n"
                         },
-                        "snippet": "\u001b[90m   at \u001b[39m..\\pages\\EmployeePage.ts:246\n\n\u001b[0m \u001b[90m 244 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadEmployeeFile( locators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m filePath\u001b[33m:\u001b[39m string) \n \u001b[90m 245 |\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 246 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39mfileInput)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 247 |\u001b[39m   \u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39mfileInput\u001b[33m.\u001b[39msetInputFiles(path\u001b[33m.\u001b[39mresolve(filePath))\u001b[33m;\u001b[39m\n \u001b[90m 248 |\u001b[39m }\n \u001b[90m 249 |\u001b[39m\u001b[0m"
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:32.147Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "945117909fb857dc7ce5-94a4ca9b51a965ac6edf",
+              "file": "LeaveManagement.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "Lead is able to reject applied leave",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 31974,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "enter username:Tamara61@gmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:33.191Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "945117909fb857dc7ce5-9e7fc156b5f3521ea8e1",
+              "file": "LeaveManagement.spec.ts",
+              "line": 48,
+              "column": 7
+            },
+            {
+              "title": "Lead is able to approve applied leave",
+              "ok": false,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 36064,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n\n    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:23)\n    at Object.verifyApprovedLeaveToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:245:20)\n    at Object.approveAppliedLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:158:19)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:58:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 23,
+                          "line": 17
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToastMessage(page\u001b[33m:\u001b[39m\u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mmessage\u001b[33m:\u001b[39mstring)\u001b[0m"
                       },
                       "errors": [
                         {
                           "location": {
-                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts",
-                            "column": 36,
-                            "line": 246
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 23,
+                            "line": 17
                           },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('input[type=\"file\"]')\nExpected: visible\nReceived: hidden\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"file\"]')\u001b[22m\n\u001b[2m    9 × locator resolved to <input type=\"file\" id=\"fileInput\" accept=\".xlsx, .xls\" class=\"sc-cPiKLX ciXXIs\"/>\u001b[22m\n\u001b[2m      - unexpected value \"hidden\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\EmployeePage.ts:246\n\n\u001b[0m \u001b[90m 244 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadEmployeeFile( locators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m filePath\u001b[33m:\u001b[39m string) \n \u001b[90m 245 |\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 246 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39mfileInput)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 247 |\u001b[39m   \u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39mfileInput\u001b[33m.\u001b[39msetInputFiles(path\u001b[33m.\u001b[39mresolve(filePath))\u001b[33m;\u001b[39m\n \u001b[90m 248 |\u001b[39m }\n \u001b[90m 249 |\u001b[39m\u001b[0m\n\u001b[2m    at Object.uploadEmployeeFile (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts:246:36)\u001b[22m\n\u001b[2m    at Object.uploadMultipleEmployeeData (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:196:22)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\Employee.spec.ts:81:5\u001b[22m"
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToastMessage(page\u001b[33m:\u001b[39m\u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mmessage\u001b[33m:\u001b[39mstring)\u001b[0m\n\u001b[2m    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:23)\u001b[22m\n\u001b[2m    at Object.verifyApprovedLeaveToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:245:20)\u001b[22m\n\u001b[2m    at Object.approveAppliedLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:158:19)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:58:5\u001b[22m"
                         }
                       ],
-                      "stdout": [],
+                      "stdout": [
+                        {
+                          "text": "enter username:Toney35@gmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        },
+                        {
+                          "text": "initial leavecount1\n"
+                        }
+                      ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-17T17:55:10.446Z",
+                      "startTime": "2026-03-23T12:25:41.506Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Upload-T-f4b0a-load-multiple-employee-data-chromium\\test-failed-1.png"
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\test-failed-1.png"
                         },
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Upload-T-f4b0a-load-multiple-employee-data-chromium\\video.webm"
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\video.webm"
                         },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\Employee-Employee-Upload-T-f4b0a-load-multiple-employee-data-chromium\\error-context.md"
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\error-context.md"
                         }
                       ],
                       "errorLocation": {
-                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\EmployeePage.ts",
-                        "column": 36,
-                        "line": 246
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 23,
+                        "line": 17
+                      }
+                    },
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 78639,
+                      "error": {
+                        "message": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'Ok' }) to be visible\u001b[22m\n",
+                        "stack": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'Ok' }) to be visible\u001b[22m\n\n    at clickElement (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:11:17)\n    at Object.verifyLOPConfirmationPopup (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:73:23)\n    at Object.applyLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:72:3)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:56:24",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 17,
+                          "line": 11
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:11\n\n\u001b[0m \u001b[90m  9 |\u001b[39m\n \u001b[90m 10 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m clickElement(locator\u001b[33m:\u001b[39m \u001b[33mLocator\u001b[39m)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 13 |\u001b[39m }\n \u001b[90m 14 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 17,
+                            "line": 11
+                          },
+                          "message": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'Ok' }) to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:11\n\n\u001b[0m \u001b[90m  9 |\u001b[39m\n \u001b[90m 10 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m clickElement(locator\u001b[33m:\u001b[39m \u001b[33mLocator\u001b[39m)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 13 |\u001b[39m }\n \u001b[90m 14 |\u001b[39m\u001b[0m\n\u001b[2m    at clickElement (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:11:17)\u001b[22m\n\u001b[2m    at Object.verifyLOPConfirmationPopup (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:73:23)\u001b[22m\n\u001b[2m    at Object.applyLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:72:3)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:56:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:William5@hotmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-03-23T12:26:20.398Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 17,
+                        "line": 11
                       }
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "af52868f52be60f7ad1f-eead07d34553f52c152d",
-              "file": "Employee.spec.ts",
-              "line": 77,
+              "id": "945117909fb857dc7ce5-5142ca65c42b19b3c67b",
+              "file": "LeaveManagement.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "User is able to apply work from home",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 26588,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "enter username:Gwen85@hotmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:56.596Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "945117909fb857dc7ce5-6c2ba0979ed158721455",
+              "file": "LeaveManagement.spec.ts",
+              "line": 63,
+              "column": 7
+            },
+            {
+              "title": "Lead is able to approve applied Work from home",
+              "ok": false,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 32929,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('WFH Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('WFH Approved').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('WFH Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('WFH Approved').first()\u001b[22m\n\n    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:23)\n    at Object.verifyApprovedWFHToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:232:20)\n    at Object.approveAppliedWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:172:21)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:70:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 23,
+                          "line": 17
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToastMessage(page\u001b[33m:\u001b[39m\u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mmessage\u001b[33m:\u001b[39mstring)\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 23,
+                            "line": 17
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('WFH Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('WFH Approved').first()\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToastMessage(page\u001b[33m:\u001b[39m\u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mmessage\u001b[33m:\u001b[39mstring)\u001b[0m\n\u001b[2m    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:23)\u001b[22m\n\u001b[2m    at Object.verifyApprovedWFHToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:232:20)\u001b[22m\n\u001b[2m    at Object.approveAppliedWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:172:21)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:70:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Betsy.Parisian@yahoo.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:25:59.562Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-747a9-rove-applied-Work-from-home-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-747a9-rove-applied-Work-from-home-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-747a9-rove-applied-Work-from-home-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 23,
+                        "line": 17
+                      }
+                    },
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 34826,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('WFH Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('WFH Approved').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('WFH Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('WFH Approved').first()\u001b[22m\n\n    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:23)\n    at Object.verifyApprovedWFHToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:232:20)\n    at Object.approveAppliedWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:172:21)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:70:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 23,
+                          "line": 17
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToastMessage(page\u001b[33m:\u001b[39m\u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mmessage\u001b[33m:\u001b[39mstring)\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 23,
+                            "line": 17
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('WFH Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('WFH Approved').first()\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToast(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m message\u001b[33m:\u001b[39m string) {\n \u001b[90m 16 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m verifyToastMessage(page\u001b[33m:\u001b[39m\u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mmessage\u001b[33m:\u001b[39mstring)\u001b[0m\n\u001b[2m    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:17:23)\u001b[22m\n\u001b[2m    at Object.verifyApprovedWFHToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:232:20)\u001b[22m\n\u001b[2m    at Object.approveAppliedWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:172:21)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:70:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Abraham28@yahoo.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-03-23T12:26:34.561Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-747a9-rove-applied-Work-from-home-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-747a9-rove-applied-Work-from-home-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-747a9-rove-applied-Work-from-home-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-747a9-rove-applied-Work-from-home-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 23,
+                        "line": 17
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "945117909fb857dc7ce5-7663c894a0f43a1ce087",
+              "file": "LeaveManagement.spec.ts",
+              "line": 68,
+              "column": 7
+            },
+            {
+              "title": "Leadd is able to reject applied Work from home",
+              "ok": false,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 130993,
+                      "error": {
+                        "message": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'Ok' }) to be visible\u001b[22m\n",
+                        "stack": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'Ok' }) to be visible\u001b[22m\n\n    at clickElement (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:11:17)\n    at Object.verifyLOPConfirmationPopup (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:73:23)\n    at Object.applyWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:96:3)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:75:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 17,
+                          "line": 11
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:11\n\n\u001b[0m \u001b[90m  9 |\u001b[39m\n \u001b[90m 10 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m clickElement(locator\u001b[33m:\u001b[39m \u001b[33mLocator\u001b[39m)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 13 |\u001b[39m }\n \u001b[90m 14 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 17,
+                            "line": 11
+                          },
+                          "message": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByRole('button', { name: 'Ok' }) to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:11\n\n\u001b[0m \u001b[90m  9 |\u001b[39m\n \u001b[90m 10 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m clickElement(locator\u001b[33m:\u001b[39m \u001b[33mLocator\u001b[39m)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m   \u001b[36mawait\u001b[39m locator\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 13 |\u001b[39m }\n \u001b[90m 14 |\u001b[39m\u001b[0m\n\u001b[2m    at clickElement (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:11:17)\u001b[22m\n\u001b[2m    at Object.verifyLOPConfirmationPopup (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:73:23)\u001b[22m\n\u001b[2m    at Object.applyWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:96:3)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:75:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Gilbert.Monahan@gmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:26:05.187Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-f7c49-ject-applied-Work-from-home-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 17,
+                        "line": 11
+                      }
+                    },
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 35071,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\u001b[22m\n\u001b[2m    9 × locator resolved to 1 element\u001b[22m\n\u001b[2m      - unexpected value \"1\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\u001b[22m\n\u001b[2m    9 × locator resolved to 1 element\u001b[22m\n\u001b[2m      - unexpected value \"1\"\u001b[22m\n\n    at Object.deleteEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:184:29)\n    at Object.deleteEmployeeAfterApprovingWorkFromHomeOrLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:209:9)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:77:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts",
+                          "column": 29,
+                          "line": 184
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\controller\\EmployeeController.ts:184\n\n\u001b[0m \u001b[90m 182 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39msearchEmployee(page\u001b[33m,\u001b[39m locators\u001b[33m,\u001b[39m empID)\u001b[33m;\u001b[39m\n \u001b[90m 183 |\u001b[39m   \u001b[36mconst\u001b[39m employeeRow \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`.ag-cell[col-id=\"id\"]:has-text(\"${empID}\")`\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 184 |\u001b[39m   \u001b[36mawait\u001b[39m expect(employeeRow)\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m{timeout\u001b[33m:\u001b[39m\u001b[35m5000\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 185 |\u001b[39m }\n \u001b[90m 186 |\u001b[39m\n \u001b[90m 187 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadMultipleEmployeeData(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mlocators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39mgetEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts",
+                            "column": 29,
+                            "line": 184
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\u001b[22m\n\u001b[2m    9 × locator resolved to 1 element\u001b[22m\n\u001b[2m      - unexpected value \"1\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\controller\\EmployeeController.ts:184\n\n\u001b[0m \u001b[90m 182 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39msearchEmployee(page\u001b[33m,\u001b[39m locators\u001b[33m,\u001b[39m empID)\u001b[33m;\u001b[39m\n \u001b[90m 183 |\u001b[39m   \u001b[36mconst\u001b[39m employeeRow \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`.ag-cell[col-id=\"id\"]:has-text(\"${empID}\")`\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 184 |\u001b[39m   \u001b[36mawait\u001b[39m expect(employeeRow)\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m{timeout\u001b[33m:\u001b[39m\u001b[35m5000\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 185 |\u001b[39m }\n \u001b[90m 186 |\u001b[39m\n \u001b[90m 187 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadMultipleEmployeeData(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mlocators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39mgetEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[2m    at Object.deleteEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:184:29)\u001b[22m\n\u001b[2m    at Object.deleteEmployeeAfterApprovingWorkFromHomeOrLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:209:9)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:77:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Emmy86@hotmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-03-23T12:28:17.865Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-f7c49-ject-applied-Work-from-home-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-f7c49-ject-applied-Work-from-home-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-f7c49-ject-applied-Work-from-home-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-f7c49-ject-applied-Work-from-home-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts",
+                        "column": 29,
+                        "line": 184
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "945117909fb857dc7ce5-4a1a32c8c9d9f6c36770",
+              "file": "LeaveManagement.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "User is to cancel applied Leave",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 22912,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "enter username:Gregg_Considine@yahoo.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:26:23.212Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "945117909fb857dc7ce5-b5b4e850c90e0f2a98af",
+              "file": "LeaveManagement.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "User is able to cancel applied work from home",
+              "ok": false,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 3000000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 84391,
+                      "error": {
+                        "message": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.ag-center-cols-container .ag-row').first() to be visible\u001b[22m\n",
+                        "stack": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.ag-center-cols-container .ag-row').first() to be visible\u001b[22m\n\n    at Object.scrollToRightAndCancelLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:212:18)\n    at Object.cancelAppliedWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:226:19)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:88:37",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts",
+                          "column": 18,
+                          "line": 212
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\pages\\LeaveManagementPage.ts:212\n\n\u001b[0m \u001b[90m 210 |\u001b[39m\n \u001b[90m 211 |\u001b[39m   \u001b[36mconst\u001b[39m firstRow \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.ag-center-cols-container .ag-row'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 212 |\u001b[39m   \u001b[36mawait\u001b[39m firstRow\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 213 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m {\n \u001b[90m 214 |\u001b[39m     \u001b[36mconst\u001b[39m viewport \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mquerySelector(\u001b[32m'.ag-body-horizontal-scroll-viewport'\u001b[39m) \u001b[36mas\u001b[39m \u001b[33mHTMLElement\u001b[39m \u001b[33m|\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 215 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts",
+                            "column": 18,
+                            "line": 212
+                          },
+                          "message": "Error: locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.ag-center-cols-container .ag-row').first() to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\LeaveManagementPage.ts:212\n\n\u001b[0m \u001b[90m 210 |\u001b[39m\n \u001b[90m 211 |\u001b[39m   \u001b[36mconst\u001b[39m firstRow \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.ag-center-cols-container .ag-row'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 212 |\u001b[39m   \u001b[36mawait\u001b[39m firstRow\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 213 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m {\n \u001b[90m 214 |\u001b[39m     \u001b[36mconst\u001b[39m viewport \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mquerySelector(\u001b[32m'.ag-body-horizontal-scroll-viewport'\u001b[39m) \u001b[36mas\u001b[39m \u001b[33mHTMLElement\u001b[39m \u001b[33m|\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 215 |\u001b[39m\u001b[0m\n\u001b[2m    at Object.scrollToRightAndCancelLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:212:18)\u001b[22m\n\u001b[2m    at Object.cancelAppliedWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:226:19)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:88:37\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Brady.Senger@gmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:26:46.148Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-34ad5-ncel-applied-work-from-home-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts",
+                        "column": 18,
+                        "line": 212
+                      }
+                    },
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 33707,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\u001b[22m\n\u001b[2m    9 × locator resolved to 1 element\u001b[22m\n\u001b[2m      - unexpected value \"1\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\u001b[22m\n\u001b[2m    9 × locator resolved to 1 element\u001b[22m\n\u001b[2m      - unexpected value \"1\"\u001b[22m\n\n    at Object.deleteEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:184:29)\n    at Object.deleteEmployeeAfterApplyLeaveOrWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:194:9)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:89:6",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts",
+                          "column": 29,
+                          "line": 184
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\controller\\EmployeeController.ts:184\n\n\u001b[0m \u001b[90m 182 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39msearchEmployee(page\u001b[33m,\u001b[39m locators\u001b[33m,\u001b[39m empID)\u001b[33m;\u001b[39m\n \u001b[90m 183 |\u001b[39m   \u001b[36mconst\u001b[39m employeeRow \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`.ag-cell[col-id=\"id\"]:has-text(\"${empID}\")`\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 184 |\u001b[39m   \u001b[36mawait\u001b[39m expect(employeeRow)\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m{timeout\u001b[33m:\u001b[39m\u001b[35m5000\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 185 |\u001b[39m }\n \u001b[90m 186 |\u001b[39m\n \u001b[90m 187 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadMultipleEmployeeData(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mlocators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39mgetEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts",
+                            "column": 29,
+                            "line": 184
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ag-cell[col-id=\"id\"]:has-text(\"AUHU26\")')\u001b[22m\n\u001b[2m    9 × locator resolved to 1 element\u001b[22m\n\u001b[2m      - unexpected value \"1\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\controller\\EmployeeController.ts:184\n\n\u001b[0m \u001b[90m 182 |\u001b[39m   \u001b[36mawait\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39msearchEmployee(page\u001b[33m,\u001b[39m locators\u001b[33m,\u001b[39m empID)\u001b[33m;\u001b[39m\n \u001b[90m 183 |\u001b[39m   \u001b[36mconst\u001b[39m employeeRow \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`.ag-cell[col-id=\"id\"]:has-text(\"${empID}\")`\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 184 |\u001b[39m   \u001b[36mawait\u001b[39m expect(employeeRow)\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m\u001b[33m,\u001b[39m{timeout\u001b[33m:\u001b[39m\u001b[35m5000\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 185 |\u001b[39m }\n \u001b[90m 186 |\u001b[39m\n \u001b[90m 187 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m uploadMultipleEmployeeData(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39mlocators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m \u001b[33mEmployeePage\u001b[39m\u001b[33m.\u001b[39mgetEmployeeLocators\u001b[33m>\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[2m    at Object.deleteEmployeeDetails (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts:184:29)\u001b[22m\n\u001b[2m    at Object.deleteEmployeeAfterApplyLeaveOrWorkFromHome (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:194:9)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:89:6\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Eriberto.Wilkinson@hotmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-03-23T12:28:12.496Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-34ad5-ncel-applied-work-from-home-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-34ad5-ncel-applied-work-from-home-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-34ad5-ncel-applied-work-from-home-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-34ad5-ncel-applied-work-from-home-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\EmployeeController.ts",
+                        "column": 29,
+                        "line": 184
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "945117909fb857dc7ce5-294571adbb05ca0baaf0",
+              "file": "LeaveManagement.spec.ts",
+              "line": 86,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ProjectsBilling.spec.ts",
+      "file": "ProjectsBilling.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Project Tests - @Regression",
+          "file": "ProjectsBilling.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User is able to create project",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 8845,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:27:12.696Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c3cd4d38acf24b3e0a33-6acdd543e10b8131aa13",
+              "file": "ProjectsBilling.spec.ts",
+              "line": 14,
+              "column": 7
+            },
+            {
+              "title": "User is able to update project",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 9921,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:27:21.784Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c3cd4d38acf24b3e0a33-e06f80a9a6ff9610d4b5",
+              "file": "ProjectsBilling.spec.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "User is able to assign employee to project",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 17798,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:27:31.722Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c3cd4d38acf24b3e0a33-482b5e69cc805366527f",
+              "file": "ProjectsBilling.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "User is able assign employee in projects details",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 20679,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:27:42.263Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c3cd4d38acf24b3e0a33-1fe90a0f6c80354a13d1",
+              "file": "ProjectsBilling.spec.ts",
+              "line": 37,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Project Tests - @Regression",
+          "file": "ProjectsBilling.spec.ts",
+          "line": 45,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User is able to create project with Empty data",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 3417,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:27:49.534Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c3cd4d38acf24b3e0a33-d85329e228b5e06cf408",
+              "file": "ProjectsBilling.spec.ts",
+              "line": 53,
+              "column": 7
+            },
+            {
+              "title": "User is able to add duplicate project",
+              "ok": true,
+              "tags": [
+                "Regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 5931,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-03-23T12:27:52.967Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c3cd4d38acf24b3e0a33-5d329858fb79c90e189e",
+              "file": "ProjectsBilling.spec.ts",
+              "line": 58,
               "column": 7
             }
           ]
@@ -415,11 +1605,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-03-17T17:54:43.350Z",
-    "duration": 36484.237,
-    "expected": 5,
+    "startTime": "2026-03-23T12:24:53.648Z",
+    "duration": 240744.013,
+    "expected": 20,
     "skipped": 0,
-    "unexpected": 2,
+    "unexpected": 5,
     "flaky": 0
   }
 }

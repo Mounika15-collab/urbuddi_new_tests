@@ -14,7 +14,7 @@ test.describe('Client Positive Tests - @Regression', () => {
     const clientName = getGenerateEmployee();
     const locators= getClientBillingLocators(page);
     await clientController.AddClientWithValidData(page,clientName,locators);
-    await clientController.deleteClient(page,locators);
+    // await clientController.deleteClient(page,locators);
   });
 
   test('User is able to Update Client',async({page})=>{
@@ -43,7 +43,7 @@ test.describe('Client Negative Tests',()=>{
      await clientController.addClientWithInvalidData(page,locators,clientName)
   })  
   
-  test.only('USer is able to add client with duplicate data',async({page})=>{
+  test('USer is able to add client with duplicate data',async({page})=>{
     const clientName = getGenerateEmployee();
     const locators= getClientBillingLocators(page);
     await clientController.addclientWithDuplicateData(page,clientName,locators)

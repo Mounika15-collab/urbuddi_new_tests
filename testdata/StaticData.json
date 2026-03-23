@@ -88,7 +88,8 @@
         "clientDeletedSuccess":"Client Deleted Successfully",
         "projectCreatedSuccess":"Project Added Successfully",
         "ProjectUpdatedSuccess":"Project Updated Successfully",
-        "projectDeleteSuccess":"Project Deleted Successfully"
+        "projectDeleteSuccess":"Project Deleted Successfully",
+        "assignEmployeeToast":"Employee assigned successfully"
     },
 
     "notificationTexts":{
