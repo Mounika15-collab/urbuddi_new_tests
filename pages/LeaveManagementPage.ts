@@ -68,6 +68,7 @@ export async function verifyLOPConfirmationPopup(locators: ReturnType<typeof get
     await clickElement(locators.okButton);
   }
 }
+
 export async function clickLeaveButton(locators: ReturnType<typeof getLocators>) {
   await clickElement(locators.leaveButton);
 }
@@ -79,7 +80,7 @@ export async function clickWorkFromHomeButton(locators: ReturnType<typeof getLoc
 export async function enterLeaveDates(locators: ReturnType<typeof getLocators>, from: string, to: string) {
   await fillInput(locators.fromDate,from);
   await fillInput(locators.toDate,to);
-  // updateSharedData()
+
 }
 
 export async function getCalculatedDaysOnUI(locators: ReturnType<typeof getLocators>): Promise<string> {
@@ -240,6 +241,7 @@ export async function verifyApprovedLeaveToast(page:Page)
   await verifyToast(page,testData.toastMessages.approveLeaveSuccess);
 }
 
-export async function clickNotificationIcon(locators: ReturnType<typeof getLocators>){
+export async function clickNotificationIcon(locators: ReturnType<typeof getLocators>)
+{
   await clickElement(locators.notificationIcon);
 }

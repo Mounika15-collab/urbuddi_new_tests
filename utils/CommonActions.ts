@@ -41,7 +41,8 @@ export async function scrollToRightAndClick(page: Page, element: Locator): Promi
     }
   });
   await element.waitFor({ state: 'visible' });
-  await clickElement(element);
+  await page.waitForLoadState('networkidle');
+  await clickElement(element);                                          
 }
 
 export function getCreatedEmployeeDetails(filePath: string): string 

@@ -62,21 +62,21 @@
   },
   "suites": [
     {
-      "title": "LeaveManagement.spec.ts",
-      "file": "LeaveManagement.spec.ts",
+      "title": "ProjectsBilling.spec.ts",
+      "file": "ProjectsBilling.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Leave Management Tests - @Regression",
-          "file": "LeaveManagement.spec.ts",
-          "line": 25,
+          "title": "Project Tests - @Regression",
+          "file": "ProjectsBilling.spec.ts",
+          "line": 6,
           "column": 6,
           "specs": [
             {
-              "title": "Lead is able to approve applied leave",
-              "ok": false,
+              "title": "User is able to offboard an employee from the Project Details page",
+              "ok": true,
               "tags": [
                 "Regression"
               ],
@@ -91,80 +91,24 @@
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 42597,
-                      "error": {
-                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.widget-card').filter({ hasText: 'Leaves Left' }).locator('.leave-status')\nExpected: \u001b[32m\"1\"\u001b[39m\nReceived: \u001b[31m\"0\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.widget-card').filter({ hasText: 'Leaves Left' }).locator('.leave-status')\u001b[22m\n\u001b[2m    9 × locator resolved to <p class=\"leave-status\">0</p>\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.widget-card').filter({ hasText: 'Leaves Left' }).locator('.leave-status')\nExpected: \u001b[32m\"1\"\u001b[39m\nReceived: \u001b[31m\"0\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.widget-card').filter({ hasText: 'Leaves Left' }).locator('.leave-status')\u001b[22m\n\u001b[2m    9 × locator resolved to <p class=\"leave-status\">0</p>\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\n    at Object.validateLeaveCount (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:232:44)\n    at Object.verifyLeaveCountAfterApprovingLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:240:20)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:57:5",
-                        "location": {
-                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts",
-                          "column": 44,
-                          "line": 232
-                        },
-                        "snippet": "\u001b[90m   at \u001b[39m..\\pages\\LeaveManagementPage.ts:232\n\n\u001b[0m \u001b[90m 230 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m validateLeaveCount(dateRange\u001b[33m:\u001b[39m\u001b[33mDateRange\u001b[39m\u001b[33m,\u001b[39minitialLeaveCount\u001b[33m:\u001b[39m number\u001b[33m,\u001b[39mlocators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getLocators\u001b[33m>\u001b[39m){\n \u001b[90m 231 |\u001b[39m   \u001b[36mconst\u001b[39m appliedLeaveCount\u001b[33m=\u001b[39m\u001b[33mNumber\u001b[39m(calculateExpectedDays(dateRange\u001b[33m.\u001b[39mstart\u001b[33m,\u001b[39m dateRange\u001b[33m.\u001b[39mend))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 232 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39minitialLeaveCount)\u001b[33m.\u001b[39mtoHaveText(initialLeaveCount\u001b[33m.\u001b[39mtoString())\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 233 |\u001b[39m   \u001b[36mconst\u001b[39m updatedLeaveCount \u001b[33m=\u001b[39m \u001b[33mNumber\u001b[39m(\u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39minitialLeaveCount\u001b[33m.\u001b[39minnerText())\u001b[33m;\u001b[39m\n \u001b[90m 234 |\u001b[39m   \u001b[36mconst\u001b[39m expectedLeaveCount \u001b[33m=\u001b[39m initialLeaveCount \u001b[33m-\u001b[39m appliedLeaveCount\u001b[33m;\u001b[39m\n \u001b[90m 235 |\u001b[39m   expect(updatedLeaveCount)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(expectedLeaveCount)\u001b[33m;\u001b[39m\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts",
-                            "column": 44,
-                            "line": 232
-                          },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.widget-card').filter({ hasText: 'Leaves Left' }).locator('.leave-status')\nExpected: \u001b[32m\"1\"\u001b[39m\nReceived: \u001b[31m\"0\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.widget-card').filter({ hasText: 'Leaves Left' }).locator('.leave-status')\u001b[22m\n\u001b[2m    9 × locator resolved to <p class=\"leave-status\">0</p>\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\LeaveManagementPage.ts:232\n\n\u001b[0m \u001b[90m 230 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m validateLeaveCount(dateRange\u001b[33m:\u001b[39m\u001b[33mDateRange\u001b[39m\u001b[33m,\u001b[39minitialLeaveCount\u001b[33m:\u001b[39m number\u001b[33m,\u001b[39mlocators\u001b[33m:\u001b[39m \u001b[33mReturnType\u001b[39m\u001b[33m<\u001b[39m\u001b[36mtypeof\u001b[39m getLocators\u001b[33m>\u001b[39m){\n \u001b[90m 231 |\u001b[39m   \u001b[36mconst\u001b[39m appliedLeaveCount\u001b[33m=\u001b[39m\u001b[33mNumber\u001b[39m(calculateExpectedDays(dateRange\u001b[33m.\u001b[39mstart\u001b[33m,\u001b[39m dateRange\u001b[33m.\u001b[39mend))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 232 |\u001b[39m   \u001b[36mawait\u001b[39m expect(locators\u001b[33m.\u001b[39minitialLeaveCount)\u001b[33m.\u001b[39mtoHaveText(initialLeaveCount\u001b[33m.\u001b[39mtoString())\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 233 |\u001b[39m   \u001b[36mconst\u001b[39m updatedLeaveCount \u001b[33m=\u001b[39m \u001b[33mNumber\u001b[39m(\u001b[36mawait\u001b[39m locators\u001b[33m.\u001b[39minitialLeaveCount\u001b[33m.\u001b[39minnerText())\u001b[33m;\u001b[39m\n \u001b[90m 234 |\u001b[39m   \u001b[36mconst\u001b[39m expectedLeaveCount \u001b[33m=\u001b[39m initialLeaveCount \u001b[33m-\u001b[39m appliedLeaveCount\u001b[33m;\u001b[39m\n \u001b[90m 235 |\u001b[39m   expect(updatedLeaveCount)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBe(expectedLeaveCount)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at Object.validateLeaveCount (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:232:44)\u001b[22m\n\u001b[2m    at Object.verifyLeaveCountAfterApprovingLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:240:20)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:57:5\u001b[22m"
-                        }
-                      ],
-                      "stdout": [
-                        {
-                          "text": "enter username:Clay_Prohaska@yahoo.com\n"
-                        },
-                        {
-                          "text": "enter password:abcd@123\n"
-                        },
-                        {
-                          "text": "initial leavecount1\n"
-                        },
-                        {
-                          "text": "enter username:Clay_Prohaska@yahoo.com\n"
-                        },
-                        {
-                          "text": "enter password:abcd@123\n"
-                        }
-                      ],
+                      "status": "passed",
+                      "duration": 28468,
+                      "errors": [],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-03-26T13:31:12.360Z",
+                      "startTime": "2026-04-01T11:33:28.579Z",
                       "annotations": [],
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\video.webm"
-                        },
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\error-context.md"
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts",
-                        "column": 44,
-                        "line": 232
-                      }
+                      "attachments": []
                     }
                   ],
-                  "status": "unexpected"
+                  "status": "expected"
                 }
               ],
-              "id": "945117909fb857dc7ce5-5142ca65c42b19b3c67b",
-              "file": "LeaveManagement.spec.ts",
-              "line": 52,
-              "column": 8
+              "id": "c3cd4d38acf24b3e0a33-7b8d43883adfce7a6243",
+              "file": "ProjectsBilling.spec.ts",
+              "line": 54,
+              "column": 6
             }
           ]
         }
@@ -173,11 +117,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-03-26T13:31:07.501Z",
-    "duration": 47967.378,
-    "expected": 0,
+    "startTime": "2026-04-01T11:33:23.869Z",
+    "duration": 33703.725,
+    "expected": 1,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }

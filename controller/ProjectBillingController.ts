@@ -3,6 +3,7 @@ import * as projectsPage from '../pages/ProjectsBillingPage';
 import {addEmployeeDetails,FullEmployee} from '../controller/EmployeeController';
 import {getEmployeeLocators} from '../pages/EmployeePage';
 import { profileEnd } from 'node:console';
+import { da } from '@faker-js/faker/.';
 
 
 export async function navigateToProjectBillingModule(locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
@@ -66,7 +67,6 @@ export async function assignEmployeeToProject(page:Page,locators:ReturnType<type
     await projectsPage.clickOnAddButton(locators);   
 }
 
-
 export async function assignEmployeeInProjectDetailsPage(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
     const employeelocators=getEmployeeLocators(page);
     await addEmployeeDetails(page,employeelocators,data)
@@ -77,6 +77,7 @@ export async function assignEmployeeInProjectDetailsPage(page:Page,locators:Retu
     await projectsPage.searchClientName(locators);
     await projectsPage.clickOnViewIcon(page,locators);
     await projectsPage.clickOnAssignEmployeeButton(locators);
+    await page.waitForLoadState("domcontentloaded");
     await projectsPage.selectEmployeeNameFromDropdown(locators);
     await projectsPage.enterClientProjectExperience(locators);
     await projectsPage.enterOnbordingDate(locators);
@@ -86,6 +87,34 @@ export async function assignEmployeeInProjectDetailsPage(page:Page,locators:Retu
     await projectsPage.clickOnAddButton(locators);
     await projectsPage.verifyAssignedEmployeeToastInProjectDetailsPage(page);
 }
+
+export async function updateAssignedEmployeeInProjectDetails(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
+    await assignEmployeeInProjectDetailsPage(page,locators,data);
+    await projectsPage.clickOnEditIconInProjectDetailsPage(locators);
+    await projectsPage.verifyUpdatedEmployeeFrameHeading(locators);
+    await projectsPage.updatedExperience(locators);
+    await projectsPage.updateServiceType(locators);
+    await projectsPage.updateBillingType(locators);
+    await projectsPage.updateBillingAmount(locators);
+    await projectsPage.clickOnUpdatenButton(locators);
+}
+
+
+export async function deleteAssignedEmployeeInProjectDetails(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
+    await assignEmployeeInProjectDetailsPage(page,locators,data);
+    await projectsPage.clickonDeleteButtonInProjectDetailsPage(locators);
+    await projectsPage.verifyDeletePopupHeading(locators);
+    await projectsPage.clickOnConfirmDeleteButton(locators);
+}
+
+
+export async function offBoardingEmployeeInProjectDetailsPage(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
+    await assignEmployeeInProjectDetailsPage(page,locators,data);
+    await projectsPage.clickOnOffBoardingButton(locators);
+    await projectsPage.enterOffBordingDate(locators);
+    await projectsPage.ConfirmOffboradingEmployee(locators);
+}
+
 
 export async function addProjectWithEmptyData(locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
     await navigateToProjectBillingModule(locators);

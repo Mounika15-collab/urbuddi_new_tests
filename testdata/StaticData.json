@@ -114,8 +114,12 @@
         "currency":"INR",
         "updateCurrency":"EUR",
         "clientProjectExperience":"6",
+        "updatedExperience":"8",
         "serviceType":"Manual Testing",
+        "updatedServiceType":"Automation Testing",
         "BillingType":"HOURLY",
-        "BillingAmount":"100"
+        "updatedBillingType":"FIXED",
+        "BillingAmount":"100",
+        "updatedBillingAmount":"1000"  
     }
 }
