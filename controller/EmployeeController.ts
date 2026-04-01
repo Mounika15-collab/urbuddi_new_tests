@@ -126,7 +126,7 @@ export async function addEmployeeWithInvalidData(page:Page,locators: ReturnType<
   await EmployeePage.verifyEmployeeCreatedSuccesToast(page);
 }
 
-export async function addEmployeeWithoutEnteringData(page:Page,locators:ReturnType<typeof EmployeePage.getEmployeeLocators>){
+export async function addEmployeeWithEmptyData(page:Page,locators:ReturnType<typeof EmployeePage.getEmployeeLocators>){
   await EmployeePage.navigateToEmployee(page, locators);
   await EmployeePage.clickOnAddEmployeeButton(page, locators);
   await EmployeePage.clickOnAddButton(locators);
@@ -163,22 +163,22 @@ export async function updateEmployeeDetails(page: Page,locators: ReturnType<type
   const employeeDataFromExcel = getEmployeeIdAndEmails();
   const empID = employeeDataFromExcel.empID;
   await EmployeePage.searchEmployee(page, locators,empID);
-  await EmployeePage.clickOnEditIcon(locators);
+  await EmployeePage.clickOnEditIcon(page,locators,empID);
   await EmployeePage.checkCertificates(page, locators, data.certificates);
   await EmployeePage.clickOnSubmitButton(locators);
   await EmployeePage.verifyEmployeeUpdatedToast(page, locators);
 }
 
 export async function deleteEmployeeDetails(page: Page,locators: ReturnType<typeof EmployeePage.getEmployeeLocators>): Promise<void> 
- {
+{
   const employeeDataFromExcel = getEmployeeIdAndEmails();
   const empID = employeeDataFromExcel.empID;
   await EmployeePage.searchEmployee(page, locators,empID);
   await page.waitForLoadState('networkidle');
-  await EmployeePage.clickOnDeleteCheckBox(locators);
+  await EmployeePage.clickOnDeleteCheckBox(page, locators,empID);
   await EmployeePage.clickOnDeleteIcon(locators);
   await EmployeePage.verifyEmployeeDeletedToast(page);
-  await page.waitForLoadState("domcontentloaded");
+  // await page.waitForLoadState('networkidle');
   await EmployeePage.searchEmployee(page, locators, empID);
   const employeeRow = page.locator(`.ag-cell[col-id="id"]:has-text("${empID}")`);
   await expect(employeeRow).toHaveCount(0,{timeout:5000});
@@ -208,7 +208,7 @@ export async function deleteImportedEmployeesInEmployeeList(page:Page)
     await EmployeePage.searchEmployee(page, locators,empID);
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(2000);
-    await EmployeePage.clickOnDeleteCheckBox(locators);
+    await EmployeePage.clickOnDeleteCheckBox(page,locators,empID);
     await EmployeePage.clickOnDeleteIcon(locators);
     await EmployeePage.verifyEmployeeDeletedToast(page);
     await page.waitForLoadState("domcontentloaded"); 

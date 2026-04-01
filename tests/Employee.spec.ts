@@ -63,7 +63,7 @@ test.describe('Employee Management - Negative Test cases @Resgression',()=>{
 
   test('User is able to create employee without entering data',async({page})=>{
     const locators = EmployeePage.getEmployeeLocators(page);
-    await EmployeeController.addEmployeeWithoutEnteringData(page,locators);
+    await EmployeeController.addEmployeeWithEmptyData(page,locators);
   })
 });
 

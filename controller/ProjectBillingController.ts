@@ -11,7 +11,10 @@ export async function navigateToProjectBillingModule(locators:ReturnType<typeof 
 }
 
 export async function addNewProject(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
+     await page.waitForLoadState("domcontentloaded");
+     await page.waitForLoadState("networkidle");
      await projectsPage.clickOnAddProjectButton(locators);
+     await page.waitForLoadState("networkidle");
      await projectsPage.selectClientNameFromDropdown(locators);
      await projectsPage.enterProjectName(locators);
      await projectsPage.enterStartDate(locators);
@@ -48,9 +51,12 @@ export async function assignEmployeeToProject(page:Page,locators:ReturnType<type
     await navigateToProjectBillingModule(locators);
     await addNewProject(page,locators);
     await page.reload();
+    await page.waitForLoadState("networkidle");
     await projectsPage.searchProject(locators);
     await projectsPage.searchClientName(locators);
     await projectsPage.clickOnAssignEmployeeIcon(page,locators);
+    await page.waitForLoadState("domcontentloaded");
+    await page.waitForLoadState("networkidle");
     await projectsPage.selectEmployeeNameFromDropdown(locators);
     await projectsPage.enterClientProjectExperience(locators);
     await projectsPage.enterOnbordingDate(locators);

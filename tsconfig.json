@@ -11,4 +11,4 @@
   },
   
   "include": ["tests","pages","controller","utils","playwright.config.ts"]
-}
+} 

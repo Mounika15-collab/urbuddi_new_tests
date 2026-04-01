@@ -40,7 +40,7 @@ export async function generateUniqueDates(duration: number = 1): Promise<{ start
 
   if (!lastGeneratedDate) {
     lastGeneratedDate = new Date(today);
-    lastGeneratedDate.setDate(today.getDate() + 4);
+    lastGeneratedDate.setDate(today.getDate() + 1);
   } else {
     do {
       lastGeneratedDate.setDate(lastGeneratedDate.getDate() + 1);

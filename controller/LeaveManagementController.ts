@@ -56,7 +56,7 @@ export async function loginWithNewUser(page:Page,sharedData: SharedData){
   await MenuPage.clickOnLogOutMenu(page);
   await MenuPage.clickOnConfirmButton(page)
   await expect(page).toHaveURL(/login/);
-
+  await page.waitForLoadState("networkidle");
   await LoginPage.enterUserName(page, sharedData.email);
   console.log("enter username:"+sharedData.email);
   await LoginPage.enterPassword(page, sharedData.password);
@@ -191,10 +191,9 @@ export async function deleteEmployeeAfterApplyLeaveOrWorkFromHome(page:Page):Pro
   const locators = EmployeePage.getEmployeeLocators(page);
   await loginAsAdmin(page);
   await EmployeePage.navigateToEmployee(page,locators); 
-  await await EmployeeController.deleteEmployeeDetails(page, locators);
+  await EmployeeController.deleteEmployeeDetails(page, locators);
   
 }
-
 
 export async function deleteEmployeeAfterRejectingLeaveOrWorkFromHome(page:Page):Promise<void>{
   const locators = EmployeePage.getEmployeeLocators(page);
@@ -234,7 +233,6 @@ export async function cancelAppliedWorkFromHome(page:Page):Promise<void>
 export async function verifyLeaveCountAfterApprovingLeave(page:Page,sharedData:SharedData,initialLeaveCount: number,dateRange:DateRange)
 {
    const locators=LeavePage.getLocators(page);
-  //  await page.waitForLoadState("networkidle");
    await loginWithNewUser(page,sharedData);
    await page.reload();
    await page.waitForLoadState('domcontentloaded');

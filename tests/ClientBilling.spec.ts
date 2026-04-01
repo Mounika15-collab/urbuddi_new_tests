@@ -14,7 +14,7 @@ test.describe('Client Positive Tests - @Regression', () => {
     const clientName = getGenerateEmployee();
     const locators= getClientBillingLocators(page);
     await clientController.AddClientWithValidData(page,clientName,locators);
-    // await clientController.deleteClient(page,locators);
+    await clientController.deleteClient(page,locators);
   });
 
   test('User is able to Update Client',async({page})=>{

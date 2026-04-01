@@ -12,9 +12,12 @@ export async function clickElement(locator: Locator): Promise<void> {
   await locator.click();
 }
 
-export async function verifyToast(page: Page, message: string) {
+export async function verifyToast(page: Page, message: string) 
+{
   const toast = page.getByText(message, { exact: false }).first();
   await expect(toast).toBeVisible({ timeout: 10000 });
+  await expect(toast).toContainText(message);
+  await expect(toast).toBeHidden({ timeout: 10000 });
 }
 
 export async function verifyToastMessage(page:Page,message:string)
@@ -29,7 +32,8 @@ export async function verifyStatus(locator:Locator,expectedValue:string):Promise
   await expect(locator).toHaveText(expectedValue);
 }
 
-export async function scrollToRightAndClick(page: Page, element: Locator): Promise<void> {
+export async function scrollToRightAndClick(page: Page, element: Locator): Promise<void> 
+{
   await page.evaluate(() => {
     const viewport = document.querySelector('.ag-body-horizontal-scroll-viewport') as HTMLElement | null;
     if (viewport) {
@@ -40,7 +44,8 @@ export async function scrollToRightAndClick(page: Page, element: Locator): Promi
   await clickElement(element);
 }
 
-export function getCreatedEmployeeDetails(filePath: string): string {
+export function getCreatedEmployeeDetails(filePath: string): string 
+{
     const data = fs.readFileSync(filePath, 'utf-8');
     const json = JSON.parse(data);
 
@@ -50,7 +55,8 @@ export function getCreatedEmployeeDetails(filePath: string): string {
     return `${json.firstname} ${json.lastname}`;
 }
 
-export function getTodayDate(): string {
+export function getTodayDate(): string 
+{
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');

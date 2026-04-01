@@ -2,7 +2,6 @@ import test, { Page, expect } from '@playwright/test';
 import { selectDropdownOption,calculateExpectedDays } from '../utils/CommonUtils';
 import testData from '../testdata/StaticData.json';
 import { fillInput, clickElement, verifyToast,verifyStatus,updateSharedData, getSharedData } from '../utils/CommonActions';
-import { sharedData } from './ClientBillingPage';
 
 interface DateRange {
   start: string;
@@ -16,20 +15,16 @@ interface SharedData {
   appliedLeave?: DateRange;
 }
 
-// export const sharedData={
-//   appliedLeaveStartDate:'appliedLeaveStartDate',
-//   appliedLeaveEndDate:'appliedLeaveEndDate',
-// }
 export function getLocators(page: Page) {
   return {
     leaveManagementMenu: page.getByText('Leave Management', { exact: true }).first(),
     applyLeaveButton: page.locator('//button[text()="Apply Leave"]'),
     lopPopup: page.getByText('LOP Warning'),
-    okButton :page.getByRole('dialog').getByRole('button', { name: 'Ok' }),
+    okButton :page.locator('//*[@class="modal-content"]/.//button[text()="Ok"]'),
     fromDate: page.locator('#fromDate'),
     toDate: page.locator('#toDate'),
     noOfDaysLabel: page.locator('p', { hasText: 'No of Days :' }),
-    selectLead: page.locator('select[name="lead"]'),
+    selectLead: page.locator('select[name="lead"]'),  
     subjectTextField: page.locator('input[name="subject"]'),
     reasonTextField: page.locator('textarea[name="reason"]'),
     leaveButton: page.locator('#leave'),

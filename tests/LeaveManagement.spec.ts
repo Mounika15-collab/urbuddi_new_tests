@@ -26,9 +26,7 @@ test.describe('Leave Management Tests - @Regression', () =>
 {
   let employeeData: FullEmployee;
   let dateRange:DateRange;
-  let sharedData: SharedData; 
-
-  test.setTimeout(3000000)
+  let sharedData: SharedData;
 
   test.beforeEach(async ({ page }) => {
     employeeData = getEmployeeDataFromJSON();
@@ -51,7 +49,7 @@ test.describe('Leave Management Tests - @Regression', () =>
     await LeaveManagementController.deleteEmployeeAfterRejectingLeaveOrWorkFromHome(page);
   })
 
-  test('Lead is able to approve applied leave',async({page})=>{
+  test.only('Lead is able to approve applied leave',async({page})=>{
     const locators=leavePage.getLocators(page);
     const expectedDays=await LeaveManagementController.applyLeave(page,dateRange);
     const initialLeaveCount = await leavePage.getInitialLeaveCount(locators);
@@ -71,7 +69,7 @@ test.describe('Leave Management Tests - @Regression', () =>
     await LeaveManagementController.deleteEmployeeAfterApprovingWorkFromHomeOrLeave(page);
   })
 
-  test('Leadd is able to reject applied Work from home',async({page})=>{
+  test('Lead is able to reject applied Work from home',async({page})=>{
     await LeaveManagementController.applyWorkFromHome(page,dateRange);
     await LeaveManagementController.rejectAppliedWorkFromHome(page);
     await LeaveManagementController.deleteEmployeeAfterApprovingWorkFromHomeOrLeave(page);

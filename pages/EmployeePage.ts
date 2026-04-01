@@ -29,9 +29,9 @@ export function getEmployeeLocators(page: Page) {
     addButton: page.locator('button[type="submit"]'),
     submitButton: page.locator('//button[text()="Submit"]'),
     searchEmpIdField: page.locator('input[aria-label="EMP ID Filter Input"]'),
-    editIcon: page.locator('div[col-id="5"] svg').first(),
+    editIcon: '//*[text()="employeeId"]/../*[@role="gridcell"][4]',
     certificateDropdown: page.getByRole('button', { name: 'Certificates' }),
-    rowCheckBox: page.locator('input[aria-label*="row selection"]').first(),
+    rowCheckBox: '//*[text()="employeeId"]/..//input/..',
     deleteIcon: page.locator('button[class="deleteIcon"]'),
     importExcelSheetButton: page.locator('//button[text()="Import Excel Sheet"]'),
     fileInput: page.locator('input[type="file"]'),
@@ -201,9 +201,11 @@ export async function searchEmployee(page: Page,locators: ReturnType<typeof getE
   await page.keyboard.press('Enter');
 }
 
-export async function clickOnEditIcon(locators: ReturnType<typeof getEmployeeLocators>) {
-   await expect(locators.editIcon).toBeVisible();
-  await clickElement(locators.editIcon);
+export async function clickOnEditIcon(page: Page,locators: ReturnType<typeof getEmployeeLocators>,employeeId: string) {
+
+  let editButton = page.locator(locators.editIcon.replace("employeeId",employeeId))
+   await expect(editButton).toBeVisible();
+  await clickElement(editButton);
 }
 
 export async function checkCertificates(page: Page, locators: ReturnType<typeof getEmployeeLocators>, certificates: string[] = []) {
@@ -221,10 +223,11 @@ export async function verifyEmployeeUpdatedToast(page: Page, locators: ReturnTyp
   await verifyToast(page,testData.toastMessages.updateSuccess);
 }
 
-export async function clickOnDeleteCheckBox(locators: ReturnType<typeof getEmployeeLocators>){
-  await locators.rowCheckBox.waitFor({state:'visible',timeout: 5000 })
-  await expect(locators.rowCheckBox).toBeVisible();
-  await clickElement(locators.rowCheckBox);
+export async function clickOnDeleteCheckBox(page: Page,locators: ReturnType<typeof getEmployeeLocators>,employeeId: string){
+  let deleteButton = page.locator(locators.rowCheckBox.replace("employeeId",employeeId))
+  await deleteButton.waitFor({state:'visible',timeout: 10000 })
+  await expect(deleteButton).toBeVisible();
+  await clickElement(deleteButton);
 }
 
 export async function clickOnDeleteIcon(locators: ReturnType<typeof getEmployeeLocators>) {

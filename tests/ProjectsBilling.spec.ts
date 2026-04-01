@@ -26,13 +26,13 @@ test.describe('Project Tests - @Regression', () => {
     await projectController.addNewProject(page,locators);
     await projectController.updateProject(page,locators);
     await projectController.deleteProject(page,locators); 
-  })
+})
 
-  test('User is able to assign employee to project',async({page})=>{
+test('User is able to assign employee to project',async({page})=>{
     const locators=getProjectBillingLocators(page);
     const data=getEmployeeDataFromJSON();
     await projectController.assignEmployeeToProject(page,locators,data);
-  })
+})
 
   test('User is able assign employee in projects details',async({page})=>{
     const locators=getProjectBillingLocators(page);
