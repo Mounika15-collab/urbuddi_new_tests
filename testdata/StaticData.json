@@ -81,8 +81,8 @@
         "approveLeaveSuccess":"Leave Approved",
         "approveWFHSuccess":"WFH Approved",
         "fileUploadSuccess":"File uploaded successfully",
-        "cancelAppliedLeave":"Leave Cancelled Successfully",
-        "cancelAppliedWFH":"WFH Cancelled Successfully",
+        "cancelAppliedLeave":"Leave Cancelled successfully",
+        "cancelAppliedWFH":"WFH Cancelled successfully",
         "clientCreatedSuccess":"Client Added Successfully",
         "clientUpdateSuccess":"Client Updated Successfully",
         "clientDeletedSuccess":"Client Deleted Successfully",
@@ -120,6 +120,11 @@
         "BillingType":"HOURLY",
         "updatedBillingType":"FIXED",
         "BillingAmount":"100",
-        "updatedBillingAmount":"1000"  
+        "updatedBillingAmount":"1000",
+        "employees":{
+            "emp1":"Jyothi Swaroop",
+            "emp2":"Kim Bauch",
+            "emp3":"Swarr Manne"
+        }          
     }
 }

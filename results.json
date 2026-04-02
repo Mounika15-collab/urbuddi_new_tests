@@ -18,7 +18,7 @@
       {
         "outputDir": "C:/Users/Admin/OneDrive/Desktop/urBuddi_typescript/test-results",
         "repeatEach": 1,
-        "retries": 0,
+        "retries": 1,
         "metadata": {
           "actualWorkers": 1
         },
@@ -62,21 +62,21 @@
   },
   "suites": [
     {
-      "title": "ProjectsBilling.spec.ts",
-      "file": "ProjectsBilling.spec.ts",
+      "title": "LeaveManagement.spec.ts",
+      "file": "LeaveManagement.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Project Tests - @Regression",
-          "file": "ProjectsBilling.spec.ts",
-          "line": 6,
+          "title": "Leave Management Tests - @Regression",
+          "file": "LeaveManagement.spec.ts",
+          "line": 25,
           "column": 6,
           "specs": [
             {
-              "title": "User is able to offboard an employee from the Project Details page",
-              "ok": true,
+              "title": "Lead is able to approve applied leave",
+              "ok": false,
               "tags": [
                 "Regression"
               ],
@@ -91,24 +91,142 @@
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 28468,
-                      "errors": [],
-                      "stdout": [],
+                      "status": "failed",
+                      "duration": 37220,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n\n    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:18:23)\n    at Object.verifyApprovedLeaveToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:245:20)\n    at Object.approveAppliedLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:158:19)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:56:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 23,
+                          "line": 18
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:18\n\n\u001b[0m \u001b[90m 16 |\u001b[39m {\n \u001b[90m 17 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeHidden({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 23,
+                            "line": 18
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:18\n\n\u001b[0m \u001b[90m 16 |\u001b[39m {\n \u001b[90m 17 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeHidden({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m }\u001b[0m\n\u001b[2m    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:18:23)\u001b[22m\n\u001b[2m    at Object.verifyApprovedLeaveToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:245:20)\u001b[22m\n\u001b[2m    at Object.approveAppliedLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:158:19)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:56:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Jackie1@hotmail.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        },
+                        {
+                          "text": "initial leavecount1\n"
+                        }
+                      ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-04-01T11:33:28.579Z",
+                      "startTime": "2026-04-02T14:09:12.940Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 23,
+                        "line": 18
+                      }
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 43132,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n\n    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:18:23)\n    at Object.verifyApprovedLeaveToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:245:20)\n    at Object.approveAppliedLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:158:19)\n    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:56:5",
+                        "location": {
+                          "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                          "column": 23,
+                          "line": 18
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:18\n\n\u001b[0m \u001b[90m 16 |\u001b[39m {\n \u001b[90m 17 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeHidden({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                            "column": 23,
+                            "line": 18
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Leave Approved').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Leave Approved').first()\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\utils\\CommonActions.ts:18\n\n\u001b[0m \u001b[90m 16 |\u001b[39m {\n \u001b[90m 17 |\u001b[39m   \u001b[36mconst\u001b[39m toast \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByText(message\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m })\u001b[33m.\u001b[39mfirst()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoContainText(message)\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect(toast)\u001b[33m.\u001b[39mtoBeHidden({ timeout\u001b[33m:\u001b[39m \u001b[35m10000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m }\u001b[0m\n\u001b[2m    at verifyToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts:18:23)\u001b[22m\n\u001b[2m    at Object.verifyApprovedLeaveToast (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\pages\\LeaveManagementPage.ts:245:20)\u001b[22m\n\u001b[2m    at Object.approveAppliedLeave (C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\controller\\LeaveManagementController.ts:158:19)\u001b[22m\n\u001b[2m    at C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\tests\\LeaveManagement.spec.ts:56:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "enter username:Pearl.OKeefe78@yahoo.com\n"
+                        },
+                        {
+                          "text": "enter password:abcd@123\n"
+                        },
+                        {
+                          "text": "initial leavecount1\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-04-02T14:09:52.014Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\test-results\\LeaveManagement-Leave-Mana-00d8a-le-to-approve-applied-leave-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Admin\\OneDrive\\Desktop\\urBuddi_typescript\\utils\\CommonActions.ts",
+                        "column": 23,
+                        "line": 18
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "c3cd4d38acf24b3e0a33-7b8d43883adfce7a6243",
-              "file": "ProjectsBilling.spec.ts",
-              "line": 54,
-              "column": 6
+              "id": "945117909fb857dc7ce5-5142ca65c42b19b3c67b",
+              "file": "LeaveManagement.spec.ts",
+              "line": 52,
+              "column": 8
             }
           ]
         }
@@ -117,11 +235,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-04-01T11:33:23.869Z",
-    "duration": 33703.725,
-    "expected": 1,
+    "startTime": "2026-04-02T14:09:01.022Z",
+    "duration": 96516.595,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

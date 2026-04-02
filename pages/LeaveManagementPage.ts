@@ -1,7 +1,7 @@
 import test, { Page, expect } from '@playwright/test';
 import { selectDropdownOption,calculateExpectedDays } from '../utils/CommonUtils';
 import testData from '../testdata/StaticData.json';
-import { fillInput, clickElement, verifyToast,verifyStatus,updateSharedData, getSharedData } from '../utils/CommonActions';
+import { fillInput, clickElement, verifyToast,verifyStatus,updateSharedData, getSharedData, scrollToRightAndClick } from '../utils/CommonActions';
 
 interface DateRange {
   start: string;
@@ -21,8 +21,8 @@ export function getLocators(page: Page) {
     applyLeaveButton: page.locator('//button[text()="Apply Leave"]'),
     lopPopup: page.getByText('LOP Warning'),
     okButton :page.locator('//*[@class="modal-content"]/.//button[text()="Ok"]'),
-    fromDate: page.locator('#fromDate'),
-    toDate: page.locator('#toDate'),
+    fromDate: page.locator('input[placeholder="From"]'),
+    toDate: page.locator('input[placeholder="To"]'),
     noOfDaysLabel: page.locator('p', { hasText: 'No of Days :' }),
     selectLead: page.locator('select[name="lead"]'),  
     subjectTextField: page.locator('input[name="subject"]'),
@@ -98,7 +98,8 @@ export async function enterLeaveDetails(locators: ReturnType<typeof getLocators>
   await fillInput(locators.reasonTextField,testData.leaveData.leaveReason);
 }
 
-export async function enterWorkFromHomeDetails(locators: ReturnType<typeof getLocators>) {
+export async function enterWorkFromHomeDetails(locators: ReturnType<typeof getLocators>) 
+{
   await fillInput(locators.subjectTextField,testData.leaveData.subject);
   await fillInput(locators.reasonTextField,testData.leaveData.leaveReason);
 }
@@ -204,16 +205,18 @@ export async function scrollToRightAndApproveWorkFromHome(page: Page,locators: R
 
 export async function scrollToRightAndCancelLeave(page: Page,locators: ReturnType<typeof getLocators>): Promise<void> {
 
-  const firstRow = page.locator('.ag-center-cols-container .ag-row').first();
-  await firstRow.waitFor({ state: 'visible' });
-  await page.evaluate(() => {
-    const viewport = document.querySelector('.ag-body-horizontal-scroll-viewport') as HTMLElement | null;
+  // const firstRow = page.locator('.ag-center-cols-container .ag-row').first();
+  // await firstRow.waitFor({ state: 'visible' });
+  // await page.evaluate(() => {
+  //   const viewport = document.querySelector('.ag-body-horizontal-scroll-viewport') as HTMLElement | null;
 
-    if (viewport) {viewport.scrollLeft = viewport.scrollWidth;}
-  });
-  const cancelBtn = locators.cancelButton.first();
-  await cancelBtn.waitFor({ state: 'visible' });
-  await clickElement(cancelBtn);
+  //   if (viewport) {viewport.scrollLeft = viewport.scrollWidth;}
+  // });
+  // const cancelBtn = locators.cancelButton.first();
+  // await cancelBtn.waitFor({ state: 'visible' });
+  // await clickElement(cancelBtn);
+
+  await scrollToRightAndClick(page,locators.cancelButton.first());
 }
 
 export async function getInitialLeaveCount(locators: ReturnType<typeof getLocators>)
@@ -230,16 +233,18 @@ export async function verifyApprovedWFHToast(page:Page)
 
 export async function validateLeaveCount(dateRange:DateRange,initialLeaveCount: number,locators: ReturnType<typeof getLocators>){
   const appliedLeaveCount=Number(calculateExpectedDays(dateRange.start, dateRange.end));
-  await expect(locators.initialLeaveCount).toHaveText(initialLeaveCount.toString());
+  await expect(locators.initialLeaveCount).not.toHaveText(initialLeaveCount.toString());
   const updatedLeaveCount = Number(await locators.initialLeaveCount.innerText());
   const expectedLeaveCount = initialLeaveCount - appliedLeaveCount;
-  expect(updatedLeaveCount).not.toBe(expectedLeaveCount);
+  expect(updatedLeaveCount).toBe(expectedLeaveCount);
 }
+
 
 export async function verifyApprovedLeaveToast(page:Page)
 {
   await verifyToast(page,testData.toastMessages.approveLeaveSuccess);
 }
+
 
 export async function clickNotificationIcon(locators: ReturnType<typeof getLocators>)
 {

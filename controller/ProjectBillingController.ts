@@ -1,9 +1,9 @@
-import { Page } from '@playwright/test';
+import { Page,expect } from '@playwright/test';
 import * as projectsPage from '../pages/ProjectsBillingPage';
 import {addEmployeeDetails,FullEmployee} from '../controller/EmployeeController';
 import {getEmployeeLocators} from '../pages/EmployeePage';
-import { profileEnd } from 'node:console';
-import { da } from '@faker-js/faker/.';
+import testdata from '../testdata/StaticData.json';
+
 
 
 export async function navigateToProjectBillingModule(locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
@@ -67,6 +67,38 @@ export async function assignEmployeeToProject(page:Page,locators:ReturnType<type
     await projectsPage.clickOnAddButton(locators);   
 }
 
+export async function assignEmployeeWithEmptyDataToProject(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
+    const employeelocators=getEmployeeLocators(page);
+    await addEmployeeDetails(page,employeelocators,data)
+    await navigateToProjectBillingModule(locators);
+    await addNewProject(page,locators);
+    await page.reload();
+    await page.waitForLoadState("networkidle");
+    await projectsPage.searchProject(locators);
+    await projectsPage.searchClientName(locators);
+    await projectsPage.clickOnAssignEmployeeIcon(page,locators);
+    await page.waitForLoadState("domcontentloaded");
+    await page.waitForLoadState("networkidle");
+    await projectsPage.clickOnAddButton(locators);
+    await projectsPage.verifyEmptyEmployeeDataInProject(locators);
+}
+
+export async function assignEmployeeWithDuplicateDataToProject(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
+    await navigateToProjectBillingModule(locators);
+    await projectsPage.searchProject(locators);
+    await projectsPage.searchClientName(locators);
+    await projectsPage.clickOnAssignEmployeeIcon(page,locators);
+    await page.waitForLoadState("domcontentloaded");
+    await projectsPage.selectEmployeeNameFromDropdown(locators);
+    await projectsPage.enterClientProjectExperience(locators);
+    await projectsPage.enterOnbordingDate(locators);
+    await projectsPage.selectServiceTypeFromDropdown(locators);
+    await projectsPage.selectBillingTypeFromDropdown(locators);
+    await projectsPage.enterBillingAmount(locators);
+    await projectsPage.clickOnAddButton(locators);
+    await projectsPage.verifyErrorMessageForDuplicateEmployee(locators);
+}
+
 export async function assignEmployeeInProjectDetailsPage(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
     const employeelocators=getEmployeeLocators(page);
     await addEmployeeDetails(page,employeelocators,data)
@@ -77,7 +109,7 @@ export async function assignEmployeeInProjectDetailsPage(page:Page,locators:Retu
     await projectsPage.searchClientName(locators);
     await projectsPage.clickOnViewIcon(page,locators);
     await projectsPage.clickOnAssignEmployeeButton(locators);
-    await page.waitForLoadState("domcontentloaded");
+    // await page.waitForLoadState("domcontentloaded");
     await projectsPage.selectEmployeeNameFromDropdown(locators);
     await projectsPage.enterClientProjectExperience(locators);
     await projectsPage.enterOnbordingDate(locators);
@@ -123,7 +155,7 @@ export async function addProjectWithEmptyData(locators:ReturnType<typeof project
     await projectsPage.verifyEmptyProjectData(locators);
 }
 
-export async function addDuplicateProjects(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
+export async function addDuplicateProjects(locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
     await navigateToProjectBillingModule(locators);
     await projectsPage.clickOnAddProjectButton(locators);
     await projectsPage.selectClientNameFromDropdown(locators);
@@ -133,4 +165,52 @@ export async function addDuplicateProjects(page:Page,locators:ReturnType<typeof 
     await projectsPage.selectCurrencyFromDropdown(locators);
     await projectsPage.clickOnAddButton(locators);
     await projectsPage.verifyErrorMessage(locators);
+}
+
+export async function assignEmployeeWithEmptyDataInProjectDetailsPage(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
+    const employeelocators=getEmployeeLocators(page);
+    await addEmployeeDetails(page,employeelocators,data)
+    await navigateToProjectBillingModule(locators);
+    await addNewProject(page,locators);
+    await page.reload();
+    await projectsPage.searchProject(locators);
+    await projectsPage.searchClientName(locators);
+    await projectsPage.clickOnViewIcon(page,locators);
+    await projectsPage.clickOnAssignEmployeeButton(locators);
+    await page.waitForLoadState("domcontentloaded");
+    await projectsPage.clickOnAddButton(locators);
+    await projectsPage.verifyEmptyEmployeeDataInProject(locators);
+}
+
+export async function viewWorkLogsOfMultipleEmployeesInProjectDetailsPage(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>){
+    await navigateToProjectBillingModule(locators);
+    await addNewProject(page,locators);
+    await page.reload();
+    await projectsPage.searchProject(locators);
+    await projectsPage.searchClientName(locators);
+    await page.waitForLoadState('networkidle')
+    await projectsPage.clickOnViewIcon(page,locators);  
+    await page.waitForLoadState('networkidle')  
+    const employees = Object.values(testdata.projectData.employees);
+     for (const emp of employees) {
+        await page.waitForLoadState('networkidle')
+        await projectsPage.clickOnAssignEmployeeButton(locators);
+        await page.waitForLoadState('domcontentloaded')
+        await page.waitForLoadState('networkidle')
+        await projectsPage.selectEmployee(locators,emp);
+        await projectsPage.enterClientProjectExperience(locators);
+        await projectsPage.enterOnbordingDate(locators);
+        await projectsPage.selectServiceTypeFromDropdown(locators);
+        await projectsPage.selectBillingTypeFromDropdown(locators);
+        await projectsPage.enterBillingAmount(locators);
+        await projectsPage.clickOnAddButton(locators);
+        await projectsPage.verifyAssignedEmployeeToastInProjectDetailsPage(page);
+    }
+    await projectsPage.clickOnViewWorkLogsButton(locators);
+    // await page.waitForTimeout(2000);
+}
+
+export async function viewWorkLogsForTheSingleEmployee(page:Page,locators:ReturnType<typeof projectsPage.getProjectBillingLocators>,data:FullEmployee){
+    await assignEmployeeInProjectDetailsPage(page,locators,data);
+    await projectsPage.clickOnViewWorkLogsButton(locators);
 }

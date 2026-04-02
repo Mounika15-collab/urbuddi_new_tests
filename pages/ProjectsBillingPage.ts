@@ -48,6 +48,8 @@ export function getProjectBillingLocators(page:Page){
         confirmOffBordingButton:page.locator('//button[text()="Confirm"]'),
         confirmDeleteButton:page.locator('//button[text()="Delete"]'),
         offBordDateTextField:page.locator('input[type="date"]'),
+        errorMessageForDuplicateEmployee:page.locator('//p[text()="Project already assigned to the employee"]'),
+        viewWorkLogsButton:page.locator('//button[text()="View Worklogs"]'),
     };
 }
 
@@ -188,6 +190,12 @@ export async function selectEmployeeNameFromDropdown(locators:ReturnType<typeof 
     await selectDropdownOption(locators.selectEmployeeName,employeeName);
 }
 
+export async function selectEmployee(locators:ReturnType<typeof getProjectBillingLocators>,emp: string){
+     await expect(locators.selectEmployeeName).toBeVisible();
+     const employeeName=emp;
+     await selectDropdownOption(locators.selectEmployeeName,employeeName);
+}
+
 export async function enterClientProjectExperience(locators:ReturnType<typeof getProjectBillingLocators>){
     await expect(locators.experienceTextfield).toBeVisible();
     await fillInput(locators.experienceTextfield,testData.projectData.clientProjectExperience);
@@ -291,4 +299,18 @@ export async function ConfirmOffboradingEmployee(locators:ReturnType<typeof getP
 export async function clickOnConfirmDeleteButton(locators:ReturnType<typeof getProjectBillingLocators>){
     await expect(locators.confirmDeleteButton).toBeVisible();
     await clickElement(locators.confirmDeleteButton);
+}
+
+export async function verifyEmptyEmployeeDataInProject(locators: ReturnType<typeof getProjectBillingLocators>){
+  const count = await getErrorCount(locators.errorFields);
+  await expect(count).toBe(6);
+}
+
+export async function verifyErrorMessageForDuplicateEmployee(locators: ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.errorMessageForDuplicateEmployee).toBeVisible();
+}
+
+export async function clickOnViewWorkLogsButton(locators: ReturnType<typeof getProjectBillingLocators>){
+    await expect(locators.viewWorkLogsButton).toBeVisible();
+    await clickElement(locators.viewWorkLogsButton);
 }

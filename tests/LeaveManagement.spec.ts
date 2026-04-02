@@ -75,15 +75,15 @@ test.describe('Leave Management Tests - @Regression', () =>
     await LeaveManagementController.deleteEmployeeAfterApprovingWorkFromHomeOrLeave(page);
   })
 
-  test("User is to cancel applied Leave",async({page})=>{
+  test('User is to cancel applied Leave',async({page})=>{
     await LeaveManagementController.applyLeave(page,dateRange);
     await LeaveManagementController.cancelAppliedLeave(page);
     await LeaveManagementController.deleteEmployeeAfterApplyLeaveOrWorkFromHome(page);
   })
 
-  test("User is able to cancel applied work from home",async({page})=>{
+  test('User is able to cancel applied work from home',async({page})=>{
     await LeaveManagementController.applyWorkFromHome(page,dateRange);
     await LeaveManagementController.cancelAppliedWorkFromHome(page);
-     await LeaveManagementController.deleteEmployeeAfterApplyLeaveOrWorkFromHome(page);
+    await LeaveManagementController.deleteEmployeeAfterApplyLeaveOrWorkFromHome(page);
   })
 });
